@@ -148,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* Practice areas */}
-      <section className="relative z-10 overflow-hidden bg-ink-950 py-20 text-white md:py-28">
+      <section className="sticky top-0 z-10 overflow-hidden bg-ink-950 py-20 text-white md:py-28">
         <p
           aria-hidden="true"
           className="pointer-events-none absolute -right-10 -top-8 select-none font-serif text-[9rem] font-semibold leading-none text-white/[0.04] md:text-[14rem]"
@@ -187,7 +187,7 @@ export default function HomePage() {
           Image column stays aspect-locked to the photo's native ratio (1672x941) so
           the full image always shows with no cropping (and the flag's percentage
           position always lines up with the actual pole). */}
-      <section className="sticky top-0 z-10 grid bg-ink-950 md:grid-cols-2 md:items-center">
+      <section className="relative z-20 grid bg-ink-950 md:grid-cols-2 md:items-center">
         <div className="relative aspect-[1672/941] w-full overflow-hidden">
           <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
             <filter id="flag-wind" x="-15%" y="-15%" width="130%" height="130%" colorInterpolationFilters="sRGB">
