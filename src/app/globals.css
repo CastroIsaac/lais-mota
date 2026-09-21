@@ -81,6 +81,14 @@ body.motion-ready .reveal.in-view {
   animation: hero-zoom 22s ease-out forwards;
 }
 
+/* No zoom on mobile — the tight portrait crop already fills the frame closely,
+   the slow scale animation there just looks like a shaky/cropped photo. */
+@media (max-width: 767px) {
+  .hero-zoom {
+    animation: none;
+  }
+}
+
 /* Waving flag — two motion layers stacked for realism:
    1. flag-gust (slow, on the wrapper): the whole flag leaning with changing wind direction/strength.
    2. flag-wave (fast, on the image): the fabric itself billowing — width/fold changes via scaleX/skew.

@@ -43,7 +43,7 @@ export default function HomePage() {
       {/* Hero — full-bleed photo with the headline overlaid on top at every breakpoint:
           bottom-anchored (vertical scrim) on mobile, right-anchored (horizontal scrim) on
           desktop, since the text sits over the photo the same way at both sizes now. */}
-      <section className="relative min-h-[85vh] md:min-h-[92vh]">
+      <section className="relative min-h-[100svh] md:min-h-[92vh]">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             {/* Mobile: tighter portrait crop — the wide desktop crop loses too much of her
