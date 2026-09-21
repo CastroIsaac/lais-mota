@@ -148,7 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* Practice areas */}
-      <section className="relative overflow-hidden bg-ink-950 py-20 text-white md:py-28">
+      <section className="relative z-10 overflow-hidden bg-ink-950 py-20 text-white md:py-28">
         <p
           aria-hidden="true"
           className="pointer-events-none absolute -right-10 -top-8 select-none font-serif text-[9rem] font-semibold leading-none text-white/[0.04] md:text-[14rem]"
@@ -187,7 +187,7 @@ export default function HomePage() {
           Image column stays aspect-locked to the photo's native ratio (1672x941) so
           the full image always shows with no cropping (and the flag's percentage
           position always lines up with the actual pole). */}
-      <section className="grid md:grid-cols-2 md:items-center">
+      <section className="relative z-10 grid bg-ink-950 md:grid-cols-2 md:items-center">
         <div className="relative aspect-[1672/941] w-full overflow-hidden">
           <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
             <filter id="flag-wind" x="-15%" y="-15%" width="130%" height="130%" colorInterpolationFilters="sRGB">
@@ -248,64 +248,68 @@ export default function HomePage() {
       </section>
 
       {/* Diferenciais — international experience */}
-      <section className="mx-auto max-w-content px-5 py-20 md:px-8 md:py-28">
-        <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">III · Diferenciais</p>
-          <div>
-            <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-              Conhecimento jurídico com visão de negócio.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">
-              Formação em Comércio Exterior permite analisar operações não apenas sob o aspecto jurídico, mas também
-              considerando sua lógica comercial, contratual e internacional — indo além de atuar em processos ou
-              elaborar contratos, para compreender o contexto do cliente e estruturar a solução mais adequada aos
-              seus objetivos.
-            </p>
+      <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-content">
+          <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">III · Diferenciais</p>
+            <div>
+              <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
+                Conhecimento jurídico com visão de negócio.
+              </h2>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">
+                Formação em Comércio Exterior permite analisar operações não apenas sob o aspecto jurídico, mas também
+                considerando sua lógica comercial, contratual e internacional — indo além de atuar em processos ou
+                elaborar contratos, para compreender o contexto do cliente e estruturar a solução mais adequada aos
+                seus objetivos.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
-          <div className="reveal stagger-1 bg-paper p-8">
-            <h3 className="font-serif text-lg text-ink-950">Operações internacionais</h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-500">
-              Experiência na estruturação jurídica de operações envolvendo importação de produtos regulados
-              provenientes da China, além de projetos de internacionalização e estruturação empresarial entre o
-              Brasil e o Oriente Médio, incluindo Omã.
-            </p>
-          </div>
-          <div className="reveal stagger-2 bg-paper p-8">
-            <h3 className="font-serif text-lg text-ink-950">Instrumentos de negociação</h3>
-            <p className="mt-3 text-sm leading-relaxed text-ink-500">
-              Elaboração e análise de contratos comerciais, memorandos de entendimento (MOUs), acordos de
-              confidencialidade (NDAs) e estruturas contratuais voltadas à proteção das partes em operações
-              transfronteiriças.
-            </p>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
+            <div className="reveal stagger-1 bg-paper p-8">
+              <h3 className="font-serif text-lg text-ink-950">Operações internacionais</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                Experiência na estruturação jurídica de operações envolvendo importação de produtos regulados
+                provenientes da China, além de projetos de internacionalização e estruturação empresarial entre o
+                Brasil e o Oriente Médio, incluindo Omã.
+              </p>
+            </div>
+            <div className="reveal stagger-2 bg-paper p-8">
+              <h3 className="font-serif text-lg text-ink-950">Instrumentos de negociação</h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                Elaboração e análise de contratos comerciais, memorandos de entendimento (MOUs), acordos de
+                confidencialidade (NDAs) e estruturas contratuais voltadas à proteção das partes em operações
+                transfronteiriças.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Process */}
-      <section className="mx-auto max-w-content px-5 py-20 md:px-8 md:py-28">
-        <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">IV · Como funciona</p>
-          <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-            Do primeiro contato à resolução.
-          </h2>
-        </div>
+      <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-content">
+          <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">IV · Como funciona</p>
+            <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
+              Do primeiro contato à resolução.
+            </h2>
+          </div>
 
-        <ol className="mt-14 grid gap-8 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <li key={step.n} className={`reveal stagger-${i + 1}`}>
-              <span className="text-sm font-semibold text-gold-600">{step.n}</span>
-              <h3 className="mt-3 font-serif text-lg text-ink-950">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-500">{step.body}</p>
-            </li>
-          ))}
-        </ol>
+          <ol className="mt-14 grid gap-8 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
+              <li key={step.n} className={`reveal stagger-${i + 1}`}>
+                <span className="text-sm font-semibold text-gold-600">{step.n}</span>
+                <h3 className="mt-3 font-serif text-lg text-ink-950">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       {/* FAQ */}
-      <section className="bg-gold-50 py-20 md:py-28">
+      <section className="relative z-10 bg-gold-50 py-20 md:py-28">
         <div className="mx-auto max-w-content px-5 md:px-8">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">V · Perguntas frequentes</p>
@@ -329,7 +333,7 @@ export default function HomePage() {
       </section>
 
       {/* Closing statement / CTA */}
-      <section className="relative overflow-hidden bg-ink-950 py-24 text-white md:py-32">
+      <section className="relative z-10 overflow-hidden bg-ink-950 py-24 text-white md:py-32">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
