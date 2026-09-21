@@ -1,6 +1,11 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  images: {
+    // AVIF first (smaller than WebP at equal quality), Next falls back to WebP/original
+    // per-browser automatically — no code changes needed anywhere <Image> is used.
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {

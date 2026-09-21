@@ -57,13 +57,17 @@ export default function HomePage() {
               alt="Laís Mota, advogada"
               fill
               priority
+              quality={85}
+              sizes="100vw"
               className="object-cover object-top md:hidden"
             />
             <Image
-              src="/images/lais-mota-image.png"
+              src="/images/lais-mota-image.jpg"
               alt="Laís Mota, advogada"
               fill
               priority
+              quality={85}
+              sizes="100vw"
               className="hidden object-cover object-left md:block"
             />
           </div>
@@ -216,14 +220,16 @@ export default function HomePage() {
             </filter>
           </svg>
           <Image
-            src="/images/brasilia-congresso-sem-bandeira.png"
+            src="/images/brasilia-congresso-sem-bandeira.jpg"
             alt="Congresso Nacional, Brasília"
             fill
+            quality={85}
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
           />
           <div className="flag-gust absolute" style={{ left: '74%', top: '4%', width: '15%' }}>
             <img
-              src="/images/bandeira-sem-fundo.png"
+              src="/images/bandeira-sem-fundo.webp"
               alt=""
               aria-hidden="true"
               className="waving-flag block w-full"

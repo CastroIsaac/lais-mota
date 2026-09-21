@@ -35,7 +35,14 @@ export default function SobrePage() {
         <div className="reveal relative">
           <div className="absolute -bottom-5 -right-5 hidden aspect-[4/5] w-full rounded-sm bg-gold-100 md:block" aria-hidden="true" />
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-ink-950/5">
-            <Image src="/images/lais-mota-image.jpeg" alt="Laís Mota, advogada" fill className="object-cover object-top" />
+            <Image
+              src="/images/lais-mota-image.jpeg"
+              alt="Laís Mota, advogada"
+              fill
+              quality={85}
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="object-cover object-top"
+            />
           </div>
         </div>
 
