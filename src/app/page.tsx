@@ -42,8 +42,10 @@ export default function HomePage() {
     <>
       {/* Hero — full-bleed photo with the headline overlaid on top at every breakpoint:
           bottom-anchored (vertical scrim) on mobile, right-anchored (horizontal scrim) on
-          desktop, since the text sits over the photo the same way at both sizes now. */}
-      <section className="relative min-h-[100svh] md:min-h-[92vh]">
+          desktop, since the text sits over the photo the same way at both sizes now.
+          `sticky` pins it while the next section scrolls up over it (see that section's
+          `relative z-10` + opaque background) instead of just scrolling away normally. */}
+      <section className="sticky top-0 z-0 min-h-[100svh] md:min-h-[92vh]">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             {/* Mobile: tighter portrait crop — the wide desktop crop loses too much of her
@@ -113,32 +115,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Quem atende + os três pilares */}
-      <section className="mx-auto max-w-content px-5 py-20 md:px-8 md:py-28">
-        <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">I · Quem atende</p>
-          <div>
-            <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-              Advocacia técnica, estratégica e personalizada.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">
-              Laís Mota atua em duas frentes: assessoria jurídica de pessoas físicas em questões civis relevantes, e
-              assessoria de empresas e empresários em contratos, estruturação de negócios, relações empresariais e
-              operações internacionais. Cada caso é analisado não apenas pela questão jurídica apresentada, mas por
-              seus impactos patrimoniais, familiares, empresariais e, quando aplicável, internacionais.
-            </p>
+      {/* Quem atende + os três pilares — relative z-10 + opaque bg so this slides up and
+          covers the sticky hero above like a layer, instead of the hero just scrolling
+          off normally. */}
+      <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-content">
+          <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">I · Quem atende</p>
+            <div>
+              <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
+                Advocacia técnica, estratégica e personalizada.
+              </h2>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">
+                Laís Mota atua em duas frentes: assessoria jurídica de pessoas físicas em questões civis relevantes, e
+                assessoria de empresas e empresários em contratos, estruturação de negócios, relações empresariais e
+                operações internacionais. Cada caso é analisado não apenas pela questão jurídica apresentada, mas por
+                seus impactos patrimoniais, familiares, empresariais e, quando aplicável, internacionais.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <ul className="mt-16 grid gap-8 border-t border-line pt-12 sm:grid-cols-3">
-          {pillars.map((item, i) => (
-            <li key={item.n} className={`reveal stagger-${i + 1}`}>
-              <span className="font-serif text-3xl text-gold-600">{item.n}</span>
-              <h3 className="mt-4 font-serif text-lg text-ink-950">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-500">{item.body}</p>
-            </li>
-          ))}
-        </ul>
+          <ul className="mt-16 grid gap-8 border-t border-line pt-12 sm:grid-cols-3">
+            {pillars.map((item, i) => (
+              <li key={item.n} className={`reveal stagger-${i + 1}`}>
+                <span className="font-serif text-3xl text-gold-600">{item.n}</span>
+                <h3 className="mt-4 font-serif text-lg text-ink-950">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* Practice areas */}
