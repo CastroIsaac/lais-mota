@@ -187,7 +187,7 @@ export default function HomePage() {
           Image column stays aspect-locked to the photo's native ratio (1672x941) so
           the full image always shows with no cropping (and the flag's percentage
           position always lines up with the actual pole). */}
-      <section className="relative z-10 grid bg-ink-950 md:grid-cols-2 md:items-center">
+      <section className="sticky top-0 z-10 grid bg-ink-950 md:grid-cols-2 md:items-center">
         <div className="relative aspect-[1672/941] w-full overflow-hidden">
           <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
             <filter id="flag-wind" x="-15%" y="-15%" width="130%" height="130%" colorInterpolationFilters="sRGB">
@@ -248,7 +248,7 @@ export default function HomePage() {
       </section>
 
       {/* Diferenciais — international experience */}
-      <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+      <section className="relative z-20 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">III · Diferenciais</p>
@@ -287,7 +287,7 @@ export default function HomePage() {
       </section>
 
       {/* Process */}
-      <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+      <section className="relative z-20 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">IV · Como funciona</p>
@@ -309,7 +309,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative z-10 bg-gold-50 py-20 md:py-28">
+      <section className="relative z-20 bg-gold-50 py-20 md:py-28">
         <div className="mx-auto max-w-content px-5 md:px-8">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">V · Perguntas frequentes</p>
@@ -333,7 +333,7 @@ export default function HomePage() {
       </section>
 
       {/* Closing statement / CTA */}
-      <section className="relative z-10 overflow-hidden bg-ink-950 py-24 text-white md:py-32">
+      <section className="relative z-20 overflow-hidden bg-ink-950 py-24 text-white md:py-32">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
