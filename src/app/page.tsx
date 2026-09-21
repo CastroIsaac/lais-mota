@@ -40,12 +40,14 @@ const steps = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — full-bleed photo (her positioned left) with headline overlaid on the right */}
-      <section className="relative flex min-h-[560px] flex-col md:min-h-[92vh]">
-        <div className="relative h-[46vh] w-full overflow-hidden md:absolute md:inset-0 md:h-full">
+      {/* Hero — full-bleed photo with the headline overlaid on top at every breakpoint:
+          bottom-anchored (vertical scrim) on mobile, right-anchored (horizontal scrim) on
+          desktop, since the text sits over the photo the same way at both sizes now. */}
+      <section className="relative min-h-[85vh] md:min-h-[92vh]">
+        <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             {/* Mobile: tighter portrait crop — the wide desktop crop loses too much of her
-                when squeezed into a short mobile strip. Desktop: wide crop with room on
+                when squeezed into a narrow mobile frame. Desktop: wide crop with room on
                 the right for the overlaid headline. Both rendered, CSS picks one per breakpoint
                 (Next/Image's standard art-direction pattern — no single-source responsive src). */}
             <Image
@@ -64,6 +66,13 @@ export default function HomePage() {
             />
           </div>
           <div
+            className="absolute inset-0 md:hidden"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(16,31,48,0) 32%, rgba(16,31,48,0.58) 62%, rgba(16,31,48,0.96) 92%)',
+            }}
+          />
+          <div
             className="absolute inset-0 hidden md:block"
             style={{
               background:
@@ -76,7 +85,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="relative flex flex-1 items-center bg-ink-950 px-6 py-14 text-white md:absolute md:inset-y-0 md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:bg-transparent md:px-10 lg:px-16">
+        <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-12 pt-20 text-white md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
           <div className="reveal w-full max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Advocacia estratégica e internacional</p>
             <h1 className="mt-5 font-serif text-4xl leading-[1.1] md:text-5xl">
