@@ -43,6 +43,25 @@ This service  →  Claude (Anthropic API)  →  reply back through Chatwoot
 Once Laís assigns a conversation to herself (or it is moved to `open`), this service stops
 responding to it — she takes over inside the exact same WhatsApp thread.
 
+## Project layout
+
+```
+src/
+  index.ts           entry point — starts the HTTP server
+  app.ts              Express app: webhook auth, filtering, per-conversation queue, main flow
+  config.ts           reads + validates env vars (see .env.example); refuses to boot in
+                       production without a real OAB_NUMBER
+  chatwootClient.ts    thin wrapper around the Chatwoot REST API
+  conversation.ts      turns a Chatwoot message list into alternating Claude turns
+  systemPrompt.ts       the legal/ethical guardrails (OAB, contract clause 3, LGPD)
+  usage.ts             file-backed monthly usage/cap tracking
+test/
+  conversation.test.ts  unit tests for the history-building logic
+  webhook.test.ts       end-to-end tests against mock Chatwoot/Anthropic servers
+```
+
+Default model: `claude-sonnet-4-5` (override with `ANTHROPIC_MODEL`).
+
 ## Setup checklist
 
 1. **WhatsApp number**: register her number with Meta Business Manager for the WhatsApp
