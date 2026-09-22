@@ -30,6 +30,19 @@ const pillars = [
   },
 ]
 
+const internationalMoments = [
+  {
+    src: '/images/lais-mota-embaixada-india.jpeg',
+    alt: 'Laís Mota na Embaixada da Índia em Brasília, no evento Parcerias Estratégicas',
+    caption: 'Embaixada da Índia — Parcerias Estratégicas Brasil-Índia',
+  },
+  {
+    src: '/images/lais-mota-cop30.jpeg',
+    alt: 'Laís Mota na COP30, Conferência do Clima da ONU, em Belém',
+    caption: 'COP30 — Conferência do Clima da ONU, Belém',
+  },
+]
+
 const steps = [
   { n: '01', title: 'Conversa inicial', body: 'Entendimento do seu caso ou da necessidade da sua empresa, sem compromisso.' },
   { n: '02', title: 'Análise estratégica', body: 'Avaliação da legislação, das provas, dos riscos e dos possíveis cenários decisórios.' },
@@ -91,26 +104,30 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-10 px-6 pb-12 pt-20 text-white md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
+        {/* top-[52svh] reserves the upper half of the mobile screen purely for the photo —
+            her face sits around 25-45% down the portrait crop, so this keeps it fully clear
+            instead of the old bottom-anchored box whose height (driven by content) pushed the
+            headline up over her face on shorter phones. Desktop resets via md:inset-y-0. */}
+        <div className="absolute inset-x-0 top-[52svh] bottom-0 z-10 flex flex-col justify-end px-6 pb-10 pt-4 text-white md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
           <div className="reveal w-full max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Advocacia estratégica e internacional</p>
-            <h1 className="mt-5 font-serif text-4xl leading-[1.1] md:text-5xl">
+            <h1 className="mt-3 font-serif text-[1.7rem] leading-[1.15] md:mt-5 md:text-5xl md:leading-[1.1]">
               Estratégia jurídica para decisões que não podem dar errado.
             </h1>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-white/75 md:mt-5 md:text-base">
               Assessoria jurídica personalizada em Direito Civil, Empresarial, Contratual e Consultoria Jurídica
               Internacional — para pessoas físicas e para empresas com atuação no Brasil e no exterior.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-5 flex flex-col gap-2.5 sm:flex-row md:mt-8 md:gap-3">
               <Link
                 href="/contato"
-                className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
+                className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 md:py-3"
               >
                 Agendar uma conversa
               </Link>
               <Link
                 href="/areas-de-atuacao"
-                className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/60"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/60 md:py-3"
               >
                 Áreas de atuação
               </Link>
@@ -271,7 +288,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
+          {/* Photographic proof of the international claim above — embassy, UN conference —
+              so "atuação internacional" isn't just copy. */}
+          <div className="reveal mt-14 grid gap-4 sm:grid-cols-2">
+            {internationalMoments.map((item, i) => (
+              <figure key={item.src} className={`stagger-${i + 1} group overflow-hidden rounded-sm bg-ink-950`}>
+                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    quality={85}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="px-1 py-3 text-xs leading-snug text-ink-500">{item.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
             <div className="reveal stagger-1 bg-paper p-8">
               <h3 className="font-serif text-lg text-ink-950">Operações internacionais</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-500">
@@ -292,8 +329,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+      {/* Do ambiente institucional ao diálogo internacional — full-bleed component, same
+          weight as the Brasília section above rather than a card boxed inside Diferenciais.
+          sticky + min-h (same trick as the hero) pins it in place while Process scrolls up
+          over it, instead of it just scrolling past like a normal section. Process is bumped
+          to z-20 to guarantee it wins the overlap — same-z DOM-order tie-breaking is what
+          bit us the last time a second sticky layer was added here (see git history). */}
+      <section className="sticky top-0 z-10 grid min-h-[85svh] bg-ink-950 md:min-h-[80vh] md:grid-cols-2">
+        <div className="relative aspect-[9/16] w-full overflow-hidden md:aspect-auto">
+          <Image
+            src="/images/lais-mota-itamaraty.jpeg"
+            alt="Laís Mota no Palácio do Itamaraty, sede do Ministério das Relações Exteriores, em Brasília"
+            fill
+            quality={85}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="reveal flex flex-col justify-center bg-ink-950 px-6 py-14 text-white md:px-12 md:py-16 lg:px-16">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Diferenciais</p>
+          <h2 className="mt-5 max-w-md font-serif text-3xl leading-tight md:text-4xl">
+            Do ambiente institucional ao diálogo internacional.
+          </h2>
+          <p className="mt-5 max-w-md text-base leading-relaxed text-white/70">
+            Uma atuação contemporânea também se constrói pela escuta de diferentes contextos — jurídicos,
+            empresariais, culturais e globais.
+          </p>
+        </div>
+      </section>
+
+      {/* Process — z-20 so it slides up and covers the sticky Itamaraty section above it. */}
+      <section className="relative z-20 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">IV · Como funciona</p>
