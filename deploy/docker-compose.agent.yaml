@@ -1,0 +1,35 @@
+# Adiciona o agente de IA e o Caddy (HTTPS automático) ao mesmo projeto do Chatwoot.
+# Rode sempre combinando os dois arquivos, do diretório deploy/:
+#   docker compose -f docker-compose.yaml -f docker-compose.agent.yaml --env-file .env.chatwoot up -d --build
+# Assim todos os serviços (rails, sidekiq, postgres, redis, whatsapp-agent, caddy)
+# ficam na mesma rede padrão do projeto e se enxergam pelo nome do serviço.
+
+services:
+  whatsapp-agent:
+    build:
+      context: ../whatsapp-agent
+    env_file:
+      - ../whatsapp-agent/.env
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - whatsapp_agent_data:/app/data
+    restart: always
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: always
+    depends_on:
+      - rails
+
+volumes:
+  whatsapp_agent_data:
+  caddy_data:
+  caddy_config:

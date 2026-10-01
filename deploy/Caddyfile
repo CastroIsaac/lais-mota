@@ -1,0 +1,10 @@
+# Caddy pega certificado HTTPS automaticamente via Let's Encrypt para esse domínio,
+# e repassa o tráfego pro container "rails" do Chatwoot (porta 3000 interna).
+# Troque o e-mail abaixo por um de verdade (recebe avisos de expiração de certificado).
+{
+    email isaaccraftbr@gmail.com
+}
+
+atendimento.laismotaadvocacia.com.br {
+    reverse_proxy rails:3000
+}
