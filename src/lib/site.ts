@@ -10,8 +10,8 @@ export const siteConfig = {
   name: 'Laís Mota Advocacia',
   attorneyName: 'Laís Almeida Mota',
   oabNumber: 'OAB/DF nº 123.456',
-  phoneDisplay: '+55 93 99229-0495',
-  whatsappUrl: 'https://wa.me/5593992290495',
+  phoneDisplay: '+55 93 99223-0495',
+  whatsappUrl: 'https://wa.me/5593992230495',
   email: 'lais_mota@outlook.com',
   // Office address (not her residence) — this is the one safe to publish.
   addressLine: 'CLN 211, Bloco A, Sala 222 — Asa Norte, Brasília-DF',
