@@ -34,7 +34,7 @@ echo ""
 cat /root/.ssh/id_ed25519.pub
 echo ""
 echo " 2. No DNS onde comprou laismotaadvocacia.com.br, crie um registro A:"
-echo "    atendimento.laismotaadvocacia.com.br  ->  $(curl -s ifconfig.me)"
+echo "    atendimento.laismotaadvocacia.com.br  ->  $(curl -4 -s ifconfig.me)"
 echo ""
 echo " 3. Espere o DNS propagar (teste com: ping atendimento.laismotaadvocacia.com.br)"
 echo "=================================================================="
