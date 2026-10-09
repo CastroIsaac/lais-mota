@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import { trackWhatsAppClick } from '@/lib/analytics'
 import { siteConfig } from '@/lib/site'
 
 export function ContactForm() {
@@ -17,6 +18,7 @@ export function ContactForm() {
 
     const text = `Olá, meu nome é ${nome}.\nAssunto: ${assunto}\n\n${mensagem}`
     const url = `${siteConfig.whatsappUrl}?text=${encodeURIComponent(text)}`
+    trackWhatsAppClick('formulario-contato')
     window.open(url, '_blank', 'noreferrer')
     setSubmitting(false)
   }

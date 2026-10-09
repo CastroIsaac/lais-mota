@@ -4,6 +4,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 import { ScrollReveal } from '@/components/ScrollReveal'
+import { Analytics } from '@/components/Analytics'
 import { JsonLd } from '@/components/JsonLd'
 import { practiceAreas } from '@/lib/practiceAreas'
 import { absoluteUrl, shareImage, siteConfig, siteUrl } from '@/lib/site'
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main>{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <Analytics />
       </body>
     </html>
   )
