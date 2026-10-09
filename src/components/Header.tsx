@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
@@ -43,9 +44,15 @@ export function Header() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-ink-950/10 bg-paper/90 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-content items-center justify-between px-5 py-4 md:px-8">
-        <Link href="/" className="flex shrink-0 flex-col leading-none" onClick={() => setIsMenuOpen(false)}>
-          <span className="font-serif text-lg text-ink-950">Laís Mota</span>
-          <span className="mt-0.5 text-[0.62rem] font-medium uppercase tracking-[0.28em] text-gold-600">Advocacia</span>
+        <Link href="/" className="shrink-0" onClick={() => setIsMenuOpen(false)}>
+          <Image
+            src="/images/lais-logo.png"
+            alt="Laís Mota Advocacia"
+            width={805}
+            height={240}
+            priority
+            className="h-10 w-auto md:h-12"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-ink-700 md:flex" aria-label="Navegação principal">

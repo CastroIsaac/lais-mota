@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { siteConfig } from '@/lib/site'
 
@@ -6,10 +7,14 @@ export function Footer() {
     <footer className="border-t border-ink-950/10 bg-ink-950 text-white">
       <div className="mx-auto grid w-full max-w-content gap-10 px-5 py-14 md:grid-cols-3 md:px-8">
         <div>
-          <span className="font-serif text-lg">Laís Mota</span>
-          <span className="mt-0.5 block text-[0.62rem] font-medium uppercase tracking-[0.28em] text-gold-400">
-            Advocacia
-          </span>
+          {/* Brown logo would vanish on the navy footer — render it white. */}
+          <Image
+            src="/images/lais-logo.png"
+            alt="Laís Mota Advocacia"
+            width={805}
+            height={240}
+            className="h-14 w-auto brightness-0 invert"
+          />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
             Assessoria jurídica direta e transparente, com atenção a cada detalhe do seu caso.
           </p>
