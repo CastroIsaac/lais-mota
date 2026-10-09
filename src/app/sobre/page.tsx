@@ -1,16 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { absoluteUrl, siteConfig } from '@/lib/site'
+import { pageMetadata, siteConfig } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Sobre Laís Mota',
   description:
     'Conheça a trajetória de Laís Mota, advogada em Brasília com atuação em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional.',
-  alternates: { canonical: absoluteUrl('/sobre') },
-}
+  path: '/sobre',
+})
 
-// TODO(mockup): oabNumber is placeholder copy — replace with the real OAB registration number before launch.
 const credentials = [
   {
     label: siteConfig.oabNumber,

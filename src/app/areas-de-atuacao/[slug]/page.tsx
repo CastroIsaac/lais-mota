@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { JsonLd } from '@/components/JsonLd'
 import { getPracticeArea, practiceAreas } from '@/lib/practiceAreas'
-import { absoluteUrl } from '@/lib/site'
+import { absoluteUrl, pageMetadata } from '@/lib/site'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -15,11 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const area = getPracticeArea(slug)
   if (!area) return {}
 
-  return {
-    title: area.title,
-    description: area.description,
-    alternates: { canonical: absoluteUrl(`/areas-de-atuacao/${area.slug}`) },
-  }
+  return pageMetadata({ title: area.title, description: area.description, path: `/areas-de-atuacao/${area.slug}` })
 }
 
 export default async function PracticeAreaPage({ params }: Props) {
@@ -27,8 +24,33 @@ export default async function PracticeAreaPage({ params }: Props) {
   const area = getPracticeArea(slug)
   if (!area) notFound()
 
+  const url = absoluteUrl(`/areas-de-atuacao/${area.slug}`)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Início', item: absoluteUrl('/') },
+          { '@type': 'ListItem', position: 2, name: 'Áreas de atuação', item: absoluteUrl('/areas-de-atuacao') },
+          { '@type': 'ListItem', position: 3, name: area.title, item: url },
+        ],
+      },
+      {
+        '@type': 'Service',
+        name: area.title,
+        description: area.description,
+        url,
+        serviceType: area.title,
+        provider: { '@id': absoluteUrl('/#escritorio') },
+        areaServed: { '@type': 'Country', name: 'Brasil' },
+      },
+    ],
+  }
+
   return (
     <section className="mx-auto max-w-content px-5 pb-20 pt-32 md:px-8 md:pb-28 md:pt-40">
+      <JsonLd data={jsonLd} />
       <Link href="/areas-de-atuacao" className="text-sm font-medium text-ink-500 transition hover:text-gold-600">
         ← Áreas de atuação
       </Link>

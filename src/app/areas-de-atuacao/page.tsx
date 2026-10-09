@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { practiceAreas } from '@/lib/practiceAreas'
-import { absoluteUrl } from '@/lib/site'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Áreas de Atuação',
   description:
     'Direito empresarial, contratual, consultoria jurídica internacional e direito civil — conheça as áreas de atuação de Laís Mota.',
-  alternates: { canonical: absoluteUrl('/areas-de-atuacao') },
-}
+  path: '/areas-de-atuacao',
+})
 
 export default function AreasDeAtuacaoPage() {
   return (

@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { JsonLd } from '@/components/JsonLd'
 import { faqItems } from '@/lib/faq'
 import { practiceAreas } from '@/lib/practiceAreas'
-import { absoluteUrl, siteConfig } from '@/lib/site'
+import { pageMetadata, siteConfig } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Advocacia Estratégica e Internacional em Brasília',
   description:
     'Laís Mota é advogada em Brasília com atuação estratégica em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional.',
-  alternates: { canonical: absoluteUrl('/') },
-}
+  path: '/',
+})
 
 const pillars = [
   {
@@ -50,9 +51,20 @@ const steps = [
   { n: '04', title: 'Acompanhamento', body: 'Atuação direta até a resolução, com comunicação constante sobre cada etapa.' },
 ]
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+}
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       {/* Hero — full-bleed photo with the headline overlaid on top at every breakpoint:
           bottom-anchored (vertical scrim) on mobile, right-anchored (horizontal scrim) on
           desktop, since the text sits over the photo the same way at both sizes now.

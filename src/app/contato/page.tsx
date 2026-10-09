@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import { ContactForm } from '@/components/ContactForm'
-import { absoluteUrl, siteConfig } from '@/lib/site'
+import { pageMetadata, siteConfig } from '@/lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Contato',
-  description: 'Agende uma conversa com Laís Mota para tratar do seu caso ou das necessidades jurídicas da sua empresa.',
-  alternates: { canonical: absoluteUrl('/contato') },
-}
+  description:
+    'Agende uma conversa com Laís Mota para tratar do seu caso ou das necessidades jurídicas da sua empresa.',
+  path: '/contato',
+})
 
 export default function ContatoPage() {
   return (
