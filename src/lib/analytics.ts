@@ -1,6 +1,8 @@
-// GA4 measurement ID (G-XXXXXXXXXX). Set NEXT_PUBLIC_GA_ID in Vercel; without it
-// no analytics script loads and tracking calls are no-ops.
-export const gaId = process.env.NEXT_PUBLIC_GA_ID
+// GA4 measurement ID (public — it ships in the page anyway). Only production
+// builds load it, so `next dev` doesn't pollute the reports. NEXT_PUBLIC_GA_ID
+// overrides it if the property ever changes.
+export const gaId =
+  process.env.NODE_ENV === 'production' ? (process.env.NEXT_PUBLIC_GA_ID ?? 'G-TEHLQN6DXZ') : undefined
 
 declare global {
   interface Window {
