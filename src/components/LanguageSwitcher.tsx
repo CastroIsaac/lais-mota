@@ -55,30 +55,26 @@ function restoreScrollPosition() {
   document.fonts?.ready.then(scroll)
 }
 
-// Desktop: a flag button that opens a small menu. Mobile (`variant="list"`):
-// all languages laid out inline inside the hamburger panel.
+// Flag button that opens a small language menu. Rendered twice in the header
+// (desktop group, and next to the logo on mobile); CSS shows one at a time.
 export function LanguageSwitcher({
   locale,
   label,
-  variant = 'menu',
-  onNavigate,
-  tabIndex,
+  align = 'right',
 }: {
   locale: Locale
   label: string
-  variant?: 'menu' | 'list'
-  onNavigate?: () => void
-  tabIndex?: number
+  align?: 'left' | 'right'
 }) {
   const pathname = usePathname()
   const basePath = stripLocale(pathname)
   const [open, setOpen] = useState(false)
   const rootRef = useRef<HTMLDivElement>(null)
 
-  // Both header instances (desktop + mobile) mount; only one should restore.
+  // Both header instances mount; the first to run restores and clears the saved spot.
   useEffect(() => {
-    if (variant === 'menu') restoreScrollPosition()
-  }, [variant])
+    restoreScrollPosition()
+  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -103,12 +99,10 @@ export function LanguageSwitcher({
       hrefLang={localeMeta[l].htmlLang}
       lang={localeMeta[l].htmlLang}
       aria-current={l === locale ? 'true' : undefined}
-      tabIndex={tabIndex}
       scroll={false}
       onClick={() => {
         if (l !== locale) saveScrollPosition(localePath(l, basePath))
         setOpen(false)
-        onNavigate?.()
       }}
       className={`flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition hover:bg-ink-950/5 hover:text-gold-600 ${
         l === locale ? 'font-semibold text-ink-950' : 'text-ink-700'
@@ -118,15 +112,6 @@ export function LanguageSwitcher({
       {localeMeta[l].label}
     </Link>
   ))
-
-  if (variant === 'list') {
-    return (
-      <div className="border-t border-ink-950/10 pt-3">
-        <p className="px-2 pb-1 text-xs font-semibold uppercase tracking-[0.2em] text-ink-500">{label}</p>
-        <div className="grid grid-cols-2 gap-1">{options}</div>
-      </div>
-    )
-  }
 
   return (
     <div ref={rootRef} className="relative">
@@ -143,7 +128,7 @@ export function LanguageSwitcher({
         <span aria-hidden="true" className={`text-[0.6rem] transition ${open ? 'rotate-180' : ''}`}>▾</span>
       </button>
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-44 rounded-lg border border-ink-950/10 bg-paper p-1.5 shadow-card">
+        <div className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} top-full z-50 mt-2 w-44 rounded-lg border border-ink-950/10 bg-paper p-1.5 shadow-card`}>
           {options}
         </div>
       )}

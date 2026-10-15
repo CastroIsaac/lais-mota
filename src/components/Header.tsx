@@ -46,16 +46,22 @@ export function Header({ locale, nav }: { locale: Locale; nav: Dictionary['nav']
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-ink-950/10 bg-paper/90 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-content items-center justify-between px-5 py-4 md:px-8">
-        <Link href={localePath(locale, '/')} className="shrink-0" onClick={() => setIsMenuOpen(false)}>
-          <Image
-            src="/images/lais-logo.png"
-            alt="Laís Mota Advocacia"
-            width={805}
-            height={240}
-            priority
-            className="h-10 w-auto lg:h-12"
-          />
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href={localePath(locale, '/')} className="shrink-0" onClick={() => setIsMenuOpen(false)}>
+            <Image
+              src="/images/lais-logo.png"
+              alt="Laís Mota Advocacia"
+              width={805}
+              height={240}
+              priority
+              className="h-10 w-auto lg:h-12"
+            />
+          </Link>
+          {/* Mobile/tablet: language right next to the logo, always visible (not buried in the menu). */}
+          <div className="lg:hidden">
+            <LanguageSwitcher locale={locale} label={nav.language} align="left" />
+          </div>
+        </div>
 
         <nav className="hidden items-center gap-6 whitespace-nowrap text-sm font-medium text-ink-700 lg:flex xl:gap-8" aria-label={nav.mainNav}>
           {navItems.map((item) => (
@@ -108,7 +114,7 @@ export function Header({ locale, nav }: { locale: Locale; nav: Dictionary['nav']
         id="mobile-nav-panel"
         ref={panelRef}
         className={`overflow-hidden border-t border-ink-950/10 bg-paper transition-[max-height,opacity] duration-300 ease-in-out lg:hidden ${
-          isMenuOpen ? 'max-h-[36rem] opacity-100' : 'max-h-0 border-t-0 opacity-0'
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 border-t-0 opacity-0'
         }`}
       >
         <nav className="flex flex-col gap-1 px-5 py-4 text-base font-medium text-ink-700" aria-label={nav.mobileNav} aria-hidden={!isMenuOpen}>
@@ -131,15 +137,6 @@ export function Header({ locale, nav }: { locale: Locale; nav: Dictionary['nav']
           >
             {nav.cta}
           </Link>
-          <div className="mt-3">
-            <LanguageSwitcher
-              locale={locale}
-              label={nav.language}
-              variant="list"
-              tabIndex={isMenuOpen ? 0 : -1}
-              onNavigate={() => setIsMenuOpen(false)}
-            />
-          </div>
         </nav>
       </div>
     </header>
