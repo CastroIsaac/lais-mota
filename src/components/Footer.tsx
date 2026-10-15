@@ -22,18 +22,18 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </div>
 
         <div className="text-sm text-white/70">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">{footer.contact}</p>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">{footer.contact}</p>
           <p>{siteConfig.phoneDisplay}</p>
           <p className="mt-1">{siteConfig.email}</p>
           <p className="mt-1">{siteConfig.addressLine}</p>
         </div>
 
         <nav className="text-sm text-white/70" aria-label={footer.navLabel}>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/40">{footer.nav}</p>
-          <ul className="space-y-2">
-            <li><Link className="hover:text-gold-400" href={localePath(locale, '/sobre')}>{nav.about}</Link></li>
-            <li><Link className="hover:text-gold-400" href={localePath(locale, '/areas-de-atuacao')}>{nav.areas}</Link></li>
-            <li><Link className="hover:text-gold-400" href={localePath(locale, '/contato')}>{nav.contact}</Link></li>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">{footer.nav}</p>
+          <ul className="space-y-1">
+            <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/sobre')}>{nav.about}</Link></li>
+            <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/areas-de-atuacao')}>{nav.areas}</Link></li>
+            <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/contato')}>{nav.contact}</Link></li>
           </ul>
           {(siteConfig.instagramUrl || siteConfig.linkedinUrl) && (
             <div className="mt-6 flex gap-4">
@@ -53,7 +53,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       </div>
 
       <div className="border-t border-white/10 px-5 py-5 md:px-8">
-        <p className="mx-auto max-w-content text-xs text-white/40">
+        <p className="mx-auto max-w-content text-xs text-white/60">
           {siteConfig.oabNumber} · © {new Date().getFullYear()} {siteConfig.attorneyName}. {footer.rights}
         </p>
       </div>

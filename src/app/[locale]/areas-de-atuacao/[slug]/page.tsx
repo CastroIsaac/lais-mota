@@ -20,7 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params
   const area = getArea(locale, slug)
   if (!area) return {}
-  return pageMetadata(locale, { title: area.title, description: area.description, path: `/areas-de-atuacao/${area.slug}` })
+  const description = `${area.summary} ${getDictionary(locale).meta.areaDescriptionSuffix}`
+  return pageMetadata(locale, { title: area.title, description, path: `/areas-de-atuacao/${area.slug}` })
 }
 
 export default async function PracticeAreaPage({ params }: Props) {

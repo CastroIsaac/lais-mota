@@ -10,7 +10,7 @@ type Props = { params: Promise<{ locale: Locale }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  return pageMetadata(locale, { ...getDictionary(locale).meta.home, path: '/' })
+  return pageMetadata(locale, { ...getDictionary(locale).meta.home, path: '/', standalone: true })
 }
 
 const momentImages = ['/images/lais-mota-embaixada-india.jpeg', '/images/lais-mota-cop30.jpeg']
@@ -354,12 +354,12 @@ export default async function HomePage({ params }: Props) {
 
           <div className="mt-12 divide-y divide-line border-t border-b border-line md:ml-[calc(170px+4rem)]">
             {dict.faq.map((item, i) => (
-              <details key={item.question} className={`reveal stagger-${(i % 4) + 1} group py-5`}>
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-lg text-ink-950 marker:content-none">
+              <details key={item.question} className={`reveal stagger-${(i % 4) + 1} group`}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 font-serif text-lg text-ink-950 marker:content-none">
                   {item.question}
                   <span className="shrink-0 text-xl text-gold-600 transition group-open:rotate-45">+</span>
                 </summary>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-500">{item.answer}</p>
+                <p className="-mt-2 max-w-2xl pb-5 text-sm leading-relaxed text-ink-500">{item.answer}</p>
               </details>
             ))}
           </div>

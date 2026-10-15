@@ -135,7 +135,7 @@ export function LanguageSwitcher({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="true"
-        aria-label={`${label}: ${localeMeta[locale].label}`}
+        aria-label={`${localeMeta[locale].short} · ${label}: ${localeMeta[locale].label}`}
         className="flex items-center gap-1.5 rounded-full border border-ink-950/15 py-1.5 pl-1.5 pr-2.5 text-xs font-semibold text-ink-700 transition hover:border-gold-500 hover:text-ink-950"
       >
         <Flag locale={locale} />

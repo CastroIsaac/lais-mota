@@ -4,9 +4,9 @@ export const es: Dictionary = {
   meta: {
     defaultTitle: 'Abogacía Estratégica e Internacional',
     home: {
-      title: 'Abogada Estratégica e Internacional en Brasilia, Brasil',
+      title: 'Laís Mota | Abogada Estratégica e Internacional en Brasilia',
       description:
-        'Laís Mota es abogada en Brasilia, Brasil, con actuación estratégica en Derecho Civil, Derecho Empresarial, Derecho Contractual y Consultoría Jurídica Internacional.',
+        'Laís Mota, abogada en Brasilia, Brasil: Derecho Civil, Empresarial, Contractual y Consultoría Jurídica Internacional para personas y empresas.',
     },
     about: {
       title: 'Sobre Laís Mota',
@@ -23,6 +23,7 @@ export const es: Dictionary = {
       description:
         'Agende una conversación con Laís Mota para tratar su caso o las necesidades jurídicas de su empresa.',
     },
+    areaDescriptionSuffix: 'Laís Mota, abogada en Brasilia, Brasil.',
     shareImageAlt: 'Laís Mota Advocacia — abogacía estratégica e internacional en Brasilia, Brasil',
   },
 

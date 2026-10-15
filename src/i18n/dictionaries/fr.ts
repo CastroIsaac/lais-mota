@@ -4,9 +4,9 @@ export const fr: Dictionary = {
   meta: {
     defaultTitle: 'Cabinet d’avocat stratégique et international',
     home: {
-      title: 'Avocate stratégique et internationale à Brasília, Brésil',
+      title: 'Laís Mota | Avocate stratégique et internationale à Brasília',
       description:
-        'Laís Mota est avocate à Brasília, au Brésil, et intervient de manière stratégique en droit civil, droit des affaires, droit des contrats et conseil juridique international.',
+        'Laís Mota, avocate à Brasília (Brésil) : droit civil, droit des affaires, droit des contrats et conseil juridique international.',
     },
     about: {
       title: 'À propos de Laís Mota',
@@ -23,6 +23,7 @@ export const fr: Dictionary = {
       description:
         'Prenez rendez-vous avec Laís Mota pour discuter de votre dossier ou des besoins juridiques de votre entreprise.',
     },
+    areaDescriptionSuffix: 'Laís Mota, avocate à Brasília, Brésil.',
     shareImageAlt: 'Laís Mota Advocacia — cabinet d’avocat stratégique et international à Brasília, Brésil',
   },
 

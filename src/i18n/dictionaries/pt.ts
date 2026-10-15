@@ -5,7 +5,7 @@ export const pt = {
   meta: {
     defaultTitle: 'Advocacia Estratégica e Internacional',
     home: {
-      title: 'Advocacia Estratégica e Internacional em Brasília',
+      title: 'Laís Mota | Advocacia Estratégica e Internacional em Brasília',
       description:
         'Laís Mota é advogada em Brasília com atuação estratégica em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional.',
     },
@@ -24,6 +24,8 @@ export const pt = {
       description:
         'Agende uma conversa com Laís Mota para tratar do seu caso ou das necessidades jurídicas da sua empresa.',
     },
+    // Appended to each practice area's short summary for its meta description.
+    areaDescriptionSuffix: 'Laís Mota Advocacia, Brasília-DF.',
     shareImageAlt: 'Laís Mota Advocacia — advocacia estratégica e internacional em Brasília-DF',
   },
 

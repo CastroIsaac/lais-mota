@@ -41,16 +41,23 @@ export function languageAlternates(path: string) {
 // Page-level openGraph replaces the layout's wholesale, so the image is repeated.
 export function pageMetadata(
   locale: Locale,
-  { title, description, path }: { title: string; description: string; path: string },
+  {
+    title,
+    description,
+    path,
+    standalone = false,
+  }: { title: string; description: string; path: string; standalone?: boolean },
 ): Metadata {
   const url = absoluteUrl(localePath(locale, path))
   const image = shareImage(locale)
+  // `standalone` titles already carry the name (home page) — skip the "| Laís Mota Advocacia" suffix.
+  const fullTitle = standalone ? title : `${title} | ${siteConfig.name}`
   return {
-    title,
+    title: standalone ? { absolute: title } : title,
     description,
     alternates: { canonical: url, languages: languageAlternates(path) },
     openGraph: {
-      title: `${title} | ${siteConfig.name}`,
+      title: fullTitle,
       description,
       url,
       siteName: siteConfig.name,

@@ -4,7 +4,7 @@ export const en: Dictionary = {
   meta: {
     defaultTitle: 'Strategic and International Legal Practice',
     home: {
-      title: 'Strategic and International Lawyer in Brasília, Brazil',
+      title: 'Laís Mota | Strategic & International Lawyer in Brasília',
       description:
         'Laís Mota is a lawyer in Brasília, Brazil, providing strategic counsel in Civil Law, Business Law, Contract Law and International Legal Consulting.',
     },
@@ -22,6 +22,7 @@ export const en: Dictionary = {
       title: 'Contact',
       description: 'Schedule a conversation with Laís Mota to discuss your case or your company’s legal needs.',
     },
+    areaDescriptionSuffix: 'Laís Mota, lawyer in Brasília, Brazil.',
     shareImageAlt: 'Laís Mota Advocacia — strategic and international legal practice in Brasília, Brazil',
   },
 
