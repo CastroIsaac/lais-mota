@@ -3,15 +3,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
+import { localePath, type Locale } from '@/i18n/config'
+import type { Dictionary } from '@/i18n'
 
-const navItems = [
-  { label: 'Início', href: '/' },
-  { label: 'Sobre', href: '/sobre' },
-  { label: 'Áreas de atuação', href: '/areas-de-atuacao' },
-  { label: 'Contato', href: '/contato' },
-]
-
-export function Header() {
+export function Header({ locale, nav }: { locale: Locale; nav: Dictionary['nav'] }) {
+  const navItems = [
+    { label: nav.home, href: localePath(locale, '/') },
+    { label: nav.about, href: localePath(locale, '/sobre') },
+    { label: nav.areas, href: localePath(locale, '/areas-de-atuacao') },
+    { label: nav.contact, href: localePath(locale, '/contato') },
+  ]
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const panelRef = useRef<HTMLDivElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
@@ -44,18 +46,18 @@ export function Header() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-ink-950/10 bg-paper/90 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-content items-center justify-between px-5 py-4 md:px-8">
-        <Link href="/" className="shrink-0" onClick={() => setIsMenuOpen(false)}>
+        <Link href={localePath(locale, '/')} className="shrink-0" onClick={() => setIsMenuOpen(false)}>
           <Image
             src="/images/lais-logo.png"
             alt="Laís Mota Advocacia"
             width={805}
             height={240}
             priority
-            className="h-10 w-auto md:h-12"
+            className="h-10 w-auto lg:h-12"
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-ink-700 md:flex" aria-label="Navegação principal">
+        <nav className="hidden items-center gap-6 whitespace-nowrap text-sm font-medium text-ink-700 lg:flex xl:gap-8" aria-label={nav.mainNav}>
           {navItems.map((item) => (
             <Link className="transition hover:text-gold-600" href={item.href} key={item.label}>
               {item.label}
@@ -63,18 +65,21 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          className="hidden shrink-0 items-center rounded-full bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-600 md:inline-flex"
-          href="/contato"
-        >
-          Agendar conversa
-        </Link>
+        <div className="hidden shrink-0 items-center gap-3 lg:flex">
+          <LanguageSwitcher locale={locale} label={nav.language} />
+          <Link
+            className="inline-flex items-center rounded-full bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-600"
+            href={localePath(locale, '/contato')}
+          >
+            {nav.cta}
+          </Link>
+        </div>
 
         <button
           ref={toggleRef}
           type="button"
-          className="relative flex h-10 w-10 shrink-0 items-center justify-center text-ink-950 md:hidden"
-          aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          className="relative flex h-10 w-10 shrink-0 items-center justify-center text-ink-950 lg:hidden"
+          aria-label={isMenuOpen ? nav.closeMenu : nav.openMenu}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-nav-panel"
           onClick={() => setIsMenuOpen((open) => !open)}
@@ -102,11 +107,11 @@ export function Header() {
       <div
         id="mobile-nav-panel"
         ref={panelRef}
-        className={`overflow-hidden border-t border-ink-950/10 bg-paper transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 border-t-0 opacity-0'
+        className={`overflow-hidden border-t border-ink-950/10 bg-paper transition-[max-height,opacity] duration-300 ease-in-out lg:hidden ${
+          isMenuOpen ? 'max-h-[36rem] opacity-100' : 'max-h-0 border-t-0 opacity-0'
         }`}
       >
-        <nav className="flex flex-col gap-1 px-5 py-4 text-base font-medium text-ink-700" aria-label="Navegação" aria-hidden={!isMenuOpen}>
+        <nav className="flex flex-col gap-1 px-5 py-4 text-base font-medium text-ink-700" aria-label={nav.mobileNav} aria-hidden={!isMenuOpen}>
           {navItems.map((item) => (
             <Link
               className="rounded-md px-2 py-3 transition hover:bg-ink-950/5 hover:text-gold-600"
@@ -120,12 +125,21 @@ export function Header() {
           ))}
           <Link
             className="mt-2 inline-flex items-center justify-center rounded-full bg-ink-950 px-5 py-3 text-sm font-semibold text-white"
-            href="/contato"
+            href={localePath(locale, '/contato')}
             tabIndex={isMenuOpen ? 0 : -1}
             onClick={() => setIsMenuOpen(false)}
           >
-            Agendar conversa
+            {nav.cta}
           </Link>
+          <div className="mt-3">
+            <LanguageSwitcher
+              locale={locale}
+              label={nav.language}
+              variant="list"
+              tabIndex={isMenuOpen ? 0 : -1}
+              onNavigate={() => setIsMenuOpen(false)}
+            />
+          </div>
         </nav>
       </div>
     </header>

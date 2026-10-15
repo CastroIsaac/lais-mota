@@ -2,66 +2,36 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { JsonLd } from '@/components/JsonLd'
-import { faqItems } from '@/lib/faq'
-import { practiceAreas } from '@/lib/practiceAreas'
+import { localePath, type Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n'
 import { pageMetadata, siteConfig } from '@/lib/site'
 
-export const metadata: Metadata = pageMetadata({
-  title: 'Advocacia Estratégica e Internacional em Brasília',
-  description:
-    'Laís Mota é advogada em Brasília com atuação estratégica em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional.',
-  path: '/',
-})
+type Props = { params: Promise<{ locale: Locale }> }
 
-const pillars = [
-  {
-    n: '01',
-    title: 'Estratégia jurídica',
-    body: 'Análise aprofundada do problema, dos riscos e dos possíveis caminhos antes da tomada de decisão.',
-  },
-  {
-    n: '02',
-    title: 'Atuação empresarial e internacional',
-    body: 'Assessoria a empresas e empresários em contratos, negócios, comércio exterior e relações jurídicas que ultrapassam as fronteiras brasileiras.',
-  },
-  {
-    n: '03',
-    title: 'Atendimento personalizado',
-    body: 'Compreensão da realidade específica de cada cliente e construção de soluções jurídicas compatíveis com seus objetivos.',
-  },
-]
-
-const internationalMoments = [
-  {
-    src: '/images/lais-mota-embaixada-india.jpeg',
-    alt: 'Laís Mota na Embaixada da Índia em Brasília, no evento Parcerias Estratégicas',
-    caption: 'Embaixada da Índia — Parcerias Estratégicas Brasil-Índia',
-  },
-  {
-    src: '/images/lais-mota-cop30.jpeg',
-    alt: 'Laís Mota na COP30, Conferência do Clima da ONU, em Belém',
-    caption: 'COP30 — Conferência do Clima da ONU, Belém',
-  },
-]
-
-const steps = [
-  { n: '01', title: 'Conversa inicial', body: 'Entendimento do seu caso ou da necessidade da sua empresa, sem compromisso.' },
-  { n: '02', title: 'Análise estratégica', body: 'Avaliação da legislação, das provas, dos riscos e dos possíveis cenários decisórios.' },
-  { n: '03', title: 'Definição do caminho', body: 'Estruturação da solução jurídica mais adequada aos seus objetivos — preventiva, contratual ou contenciosa.' },
-  { n: '04', title: 'Acompanhamento', body: 'Atuação direta até a resolução, com comunicação constante sobre cada etapa.' },
-]
-
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map((item) => ({
-    '@type': 'Question',
-    name: item.question,
-    acceptedAnswer: { '@type': 'Answer', text: item.answer },
-  })),
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return pageMetadata(locale, { ...getDictionary(locale).meta.home, path: '/' })
 }
 
-export default function HomePage() {
+const momentImages = ['/images/lais-mota-embaixada-india.jpeg', '/images/lais-mota-cop30.jpeg']
+
+const pad = (i: number) => String(i + 1).padStart(2, '0')
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params
+  const dict = getDictionary(locale)
+  const t = dict.home
+  const href = (path: string) => localePath(locale, path)
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: dict.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  }
+
   return (
     <>
       <JsonLd data={faqJsonLd} />
@@ -79,7 +49,7 @@ export default function HomePage() {
                 (Next/Image's standard art-direction pattern — no single-source responsive src). */}
             <Image
               src="/images/lais-mota-image.jpeg"
-              alt="Laís Mota, advogada"
+              alt={t.heroAlt}
               fill
               priority
               quality={85}
@@ -88,7 +58,7 @@ export default function HomePage() {
             />
             <Image
               src="/images/lais-mota-image.jpg"
-              alt="Laís Mota, advogada"
+              alt={t.heroAlt}
               fill
               priority
               quality={85}
@@ -111,7 +81,7 @@ export default function HomePage() {
             }}
           />
           <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/70 md:flex">
-            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em]">Role para saber mais</span>
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em]">{t.scroll}</span>
             <span className="h-8 w-px bg-white/40" aria-hidden="true" />
           </div>
         </div>
@@ -122,26 +92,25 @@ export default function HomePage() {
             headline up over her face on shorter phones. Desktop resets via md:inset-y-0. */}
         <div className="absolute inset-x-0 top-[52svh] bottom-0 z-10 flex flex-col justify-end px-6 pb-10 pt-4 text-white md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
           <div className="reveal w-full max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Advocacia estratégica e internacional</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">{t.eyebrow}</p>
             <h1 className="mt-3 font-serif text-[1.7rem] leading-[1.15] md:mt-5 md:text-5xl md:leading-[1.1]">
-              Estratégia jurídica para decisões que não podem dar errado.
+              {t.title}
             </h1>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-white/75 md:mt-5 md:text-base">
-              Assessoria jurídica personalizada em Direito Civil, Empresarial, Contratual e Consultoria Jurídica
-              Internacional — para pessoas físicas e para empresas com atuação no Brasil e no exterior.
+              {t.lead}
             </p>
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row md:mt-8 md:gap-3">
               <Link
-                href="/contato"
+                href={href('/contato')}
                 className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 md:py-3"
               >
-                Agendar uma conversa
+                {t.ctaPrimary}
               </Link>
               <Link
-                href="/areas-de-atuacao"
+                href={href('/areas-de-atuacao')}
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/60 md:py-3"
               >
-                Áreas de atuação
+                {t.ctaSecondary}
               </Link>
             </div>
           </div>
@@ -154,24 +123,21 @@ export default function HomePage() {
       <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">I · Quem atende</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{t.who.kicker}</p>
             <div>
               <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-                Advocacia técnica, estratégica e personalizada.
+                {t.who.title}
               </h2>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">
-                Laís Mota atua em duas frentes: assessoria jurídica de pessoas físicas em questões civis relevantes, e
-                assessoria de empresas e empresários em contratos, estruturação de negócios, relações empresariais e
-                operações internacionais. Cada caso é analisado não apenas pela questão jurídica apresentada, mas por
-                seus impactos patrimoniais, familiares, empresariais e, quando aplicável, internacionais.
+                {t.who.body}
               </p>
             </div>
           </div>
 
           <ul className="mt-16 grid gap-8 border-t border-line pt-12 sm:grid-cols-3">
-            {pillars.map((item, i) => (
-              <li key={item.n} className={`reveal stagger-${i + 1}`}>
-                <span className="font-serif text-3xl text-gold-600">{item.n}</span>
+            {t.pillars.map((item, i) => (
+              <li key={item.title} className={`reveal stagger-${i + 1}`}>
+                <span className="font-serif text-3xl text-gold-600">{pad(i)}</span>
                 <h3 className="mt-4 font-serif text-lg text-ink-950">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">{item.body}</p>
               </li>
@@ -186,20 +152,20 @@ export default function HomePage() {
           aria-hidden="true"
           className="pointer-events-none absolute -right-10 -top-8 select-none font-serif text-[9rem] font-semibold leading-none text-white/[0.04] md:text-[14rem]"
         >
-          Áreas
+          {t.areas.watermark}
         </p>
 
         <div className="relative mx-auto max-w-content px-5 md:px-8">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:items-end md:gap-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">II · Áreas de atuação</p>
-            <h2 className="max-w-xl font-serif text-3xl leading-snug md:text-4xl">Onde posso ajudar.</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">{t.areas.kicker}</p>
+            <h2 className="max-w-xl font-serif text-3xl leading-snug md:text-4xl">{t.areas.title}</h2>
           </div>
 
           <div className="mt-14 grid gap-px overflow-hidden rounded-sm bg-white/10 sm:grid-cols-2">
-            {practiceAreas.map((area, i) => (
+            {dict.practiceAreas.map((area, i) => (
               <Link
                 key={area.slug}
-                href={`/areas-de-atuacao/${area.slug}`}
+                href={href(`/areas-de-atuacao/${area.slug}`)}
                 className={`reveal stagger-${(i % 4) + 1} group relative flex min-h-[220px] flex-col justify-between bg-ink-950 p-8 transition duration-300 hover:z-10 hover:-translate-y-1 hover:bg-ink-900 hover:shadow-card`}
               >
                 <div className="flex items-center justify-between text-xs text-white/40">
@@ -250,7 +216,7 @@ export default function HomePage() {
           </svg>
           <Image
             src="/images/brasilia-congresso-sem-bandeira.jpg"
-            alt="Congresso Nacional, Brasília"
+            alt={t.brasilia.imageAlt}
             fill
             quality={85}
             sizes="(min-width: 768px) 50vw, 100vw"
@@ -267,17 +233,15 @@ export default function HomePage() {
         </div>
 
         <div className="reveal bg-ink-950 px-6 py-14 text-white md:px-12 md:py-16 lg:px-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Atuação em todo o Brasil</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">{t.brasilia.kicker}</p>
           <h2 className="mt-5 max-w-md font-serif text-3xl leading-tight md:text-4xl">
-            De Brasília para todo o Brasil — e além.
+            {t.brasilia.title}
           </h2>
           <p className="mt-5 max-w-md text-base leading-relaxed text-white/70">
-            O atendimento é realizado de forma presencial e online — por videoconferência e, quando adequado, por
-            ligação telefônica. Essa estrutura permite atender clientes em Brasília, em outros estados brasileiros
-            e também clientes envolvidos em questões internacionais.
+            {t.brasilia.body}
           </p>
-          <Link href="/contato" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-400 transition hover:text-gold-300">
-            Agendar uma conversa <span aria-hidden="true">↗</span>
+          <Link href={href('/contato')} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-400 transition hover:text-gold-300">
+            {t.brasilia.cta} <span aria-hidden="true">↗</span>
           </Link>
         </div>
       </section>
@@ -286,16 +250,13 @@ export default function HomePage() {
       <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">III · Diferenciais</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{t.diff.kicker}</p>
             <div>
               <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-                Conhecimento jurídico com visão de negócio.
+                {t.diff.title}
               </h2>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">
-                Formação em Comércio Exterior permite analisar operações não apenas sob o aspecto jurídico, mas também
-                considerando sua lógica comercial, contratual e internacional — indo além de atuar em processos ou
-                elaborar contratos, para compreender o contexto do cliente e estruturar a solução mais adequada aos
-                seus objetivos.
+                {t.diff.body}
               </p>
             </div>
           </div>
@@ -303,11 +264,11 @@ export default function HomePage() {
           {/* Photographic proof of the international claim above — embassy, UN conference —
               so "atuação internacional" isn't just copy. */}
           <div className="reveal mt-14 grid gap-4 sm:grid-cols-2">
-            {internationalMoments.map((item, i) => (
-              <figure key={item.src} className={`stagger-${i + 1} group overflow-hidden rounded-sm bg-ink-950`}>
+            {t.moments.map((item, i) => (
+              <figure key={momentImages[i]} className={`stagger-${i + 1} group overflow-hidden rounded-sm bg-ink-950`}>
                 <div className="relative aspect-[3/4] w-full overflow-hidden">
                   <Image
-                    src={item.src}
+                    src={momentImages[i]}
                     alt={item.alt}
                     fill
                     quality={85}
@@ -321,22 +282,12 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid gap-px overflow-hidden rounded-sm border border-line bg-line sm:grid-cols-2">
-            <div className="reveal stagger-1 bg-paper p-8">
-              <h3 className="font-serif text-lg text-ink-950">Operações internacionais</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-500">
-                Experiência na estruturação jurídica de operações envolvendo importação de produtos regulados
-                provenientes da China, além de projetos de internacionalização e estruturação empresarial entre o
-                Brasil e o Oriente Médio, incluindo Omã.
-              </p>
-            </div>
-            <div className="reveal stagger-2 bg-paper p-8">
-              <h3 className="font-serif text-lg text-ink-950">Instrumentos de negociação</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-500">
-                Elaboração e análise de contratos comerciais, memorandos de entendimento (MOUs), acordos de
-                confidencialidade (NDAs) e estruturas contratuais voltadas à proteção das partes em operações
-                transfronteiriças.
-              </p>
-            </div>
+            {t.experience.map((item, i) => (
+              <div key={item.title} className={`reveal stagger-${i + 1} bg-paper p-8`}>
+                <h3 className="font-serif text-lg text-ink-950">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-500">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -351,7 +302,7 @@ export default function HomePage() {
         <div className="relative aspect-[9/16] w-full overflow-hidden md:aspect-auto">
           <Image
             src="/images/lais-mota-itamaraty.jpeg"
-            alt="Laís Mota no Palácio do Itamaraty, sede do Ministério das Relações Exteriores, em Brasília"
+            alt={t.itamaraty.imageAlt}
             fill
             quality={85}
             sizes="(min-width: 768px) 50vw, 100vw"
@@ -359,13 +310,12 @@ export default function HomePage() {
           />
         </div>
         <div className="reveal flex flex-col justify-center bg-ink-950 px-6 py-14 text-white md:px-12 md:py-16 lg:px-16">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Diferenciais</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">{t.itamaraty.kicker}</p>
           <h2 className="mt-5 max-w-md font-serif text-3xl leading-tight md:text-4xl">
-            Do ambiente institucional ao diálogo internacional.
+            {t.itamaraty.title}
           </h2>
           <p className="mt-5 max-w-md text-base leading-relaxed text-white/70">
-            Uma atuação contemporânea também se constrói pela escuta de diferentes contextos — jurídicos,
-            empresariais, culturais e globais.
+            {t.itamaraty.body}
           </p>
         </div>
       </section>
@@ -374,16 +324,16 @@ export default function HomePage() {
       <section className="relative z-20 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">IV · Como funciona</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{t.process.kicker}</p>
             <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-              Do primeiro contato à resolução.
+              {t.process.title}
             </h2>
           </div>
 
           <ol className="mt-14 grid gap-8 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => (
-              <li key={step.n} className={`reveal stagger-${i + 1}`}>
-                <span className="text-sm font-semibold text-gold-600">{step.n}</span>
+            {t.steps.map((step, i) => (
+              <li key={step.title} className={`reveal stagger-${i + 1}`}>
+                <span className="text-sm font-semibold text-gold-600">{pad(i)}</span>
                 <h3 className="mt-3 font-serif text-lg text-ink-950">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">{step.body}</p>
               </li>
@@ -396,14 +346,14 @@ export default function HomePage() {
       <section className="relative z-10 bg-gold-50 py-20 md:py-28">
         <div className="mx-auto max-w-content px-5 md:px-8">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">V · Perguntas frequentes</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">{t.faq.kicker}</p>
             <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-              Antes de agendar, você pode querer saber.
+              {t.faq.title}
             </h2>
           </div>
 
           <div className="mt-12 divide-y divide-line border-t border-b border-line md:ml-[calc(170px+4rem)]">
-            {faqItems.map((item, i) => (
+            {dict.faq.map((item, i) => (
               <details key={item.question} className={`reveal stagger-${(i % 4) + 1} group py-5`}>
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-lg text-ink-950 marker:content-none">
                   {item.question}
@@ -426,18 +376,18 @@ export default function HomePage() {
           }}
         />
         <div className="reveal relative mx-auto max-w-content px-5 text-center md:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">Novas oportunidades</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">{t.closing.kicker}</p>
           <h2 className="mx-auto mt-6 max-w-2xl font-serif text-3xl leading-tight md:text-5xl">
-            Vamos transformar uma questão jurídica em decisão segura?
+            {t.closing.title}
           </h2>
           <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-white/60">
-            {siteConfig.oabNumber} · Atendimento presencial e online, com hora marcada.
+            {siteConfig.oabNumber} · {t.closing.line}
           </p>
           <Link
-            href="/contato"
+            href={href('/contato')}
             className="mt-9 inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-4 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
           >
-            Falar com Laís Mota
+            {t.closing.cta}
           </Link>
         </div>
       </section>

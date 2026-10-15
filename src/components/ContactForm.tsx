@@ -2,9 +2,10 @@
 
 import { useState, type FormEvent } from 'react'
 import { trackWhatsAppClick } from '@/lib/analytics'
+import type { Dictionary } from '@/i18n'
 import { siteConfig } from '@/lib/site'
 
-export function ContactForm() {
+export function ContactForm({ t }: { t: Dictionary['form'] }) {
   const [submitting, setSubmitting] = useState(false)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -16,7 +17,10 @@ export function ContactForm() {
     const assunto = data.get('assunto')
     const mensagem = data.get('mensagem')
 
-    const text = `Olá, meu nome é ${nome}.\nAssunto: ${assunto}\n\n${mensagem}`
+    const text = t.whatsappTemplate
+      .replace('{name}', String(nome))
+      .replace('{subject}', String(assunto))
+      .replace('{message}', String(mensagem))
     const url = `${siteConfig.whatsappUrl}?text=${encodeURIComponent(text)}`
     trackWhatsAppClick('formulario-contato')
     window.open(url, '_blank', 'noreferrer')
@@ -26,7 +30,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5 rounded-sm bg-gold-50 p-6 md:p-8">
       <label className="flex flex-col gap-2 text-sm font-semibold text-ink-950">
-        Nome
+        {t.name}
         <input
           name="nome"
           required
@@ -36,7 +40,7 @@ export function ContactForm() {
       </label>
 
       <label className="flex flex-col gap-2 text-sm font-semibold text-ink-950">
-        Assunto
+        {t.subject}
         <input
           name="assunto"
           required
@@ -45,7 +49,7 @@ export function ContactForm() {
       </label>
 
       <label className="flex flex-col gap-2 text-sm font-semibold text-ink-950">
-        Conte brevemente sobre o seu caso
+        {t.message}
         <textarea
           name="mensagem"
           required
@@ -59,10 +63,10 @@ export function ContactForm() {
         disabled={submitting}
         className="mt-2 inline-flex items-center justify-between rounded-full bg-gold-500 px-6 py-3.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 disabled:opacity-60"
       >
-        Enviar pelo WhatsApp <span aria-hidden="true">↗</span>
+        {t.submit} <span aria-hidden="true">↗</span>
       </button>
       <p className="text-xs leading-relaxed text-ink-500">
-        Ao enviar, sua mensagem será aberta no WhatsApp para confirmação e envio.
+        {t.note}
       </p>
     </form>
   )

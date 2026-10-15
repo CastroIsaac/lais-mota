@@ -1,27 +1,41 @@
 import type { MetadataRoute } from 'next'
-import { practiceAreas } from '@/lib/practiceAreas'
-import { absoluteUrl } from '@/lib/site'
+import { localePath, locales } from '@/i18n/config'
+import { getDictionary } from '@/i18n'
+import { absoluteUrl, languageAlternates } from '@/lib/site'
 
 // Date each page's content last changed. Bump the entry when you edit that page —
 // a build-time `new Date()` would tell Google everything changed on every deploy.
 const lastModified = {
-  home: '2026-10-09',
-  sobre: '2026-10-09',
-  areas: '2026-09-21',
-  contato: '2026-10-09',
+  home: '2026-10-15',
+  sobre: '2026-10-15',
+  areas: '2026-10-15',
+  contato: '2026-10-15',
 }
 
+type Page = { path: string; lastModified: string; changeFrequency: 'monthly' | 'yearly'; priority: number }
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: absoluteUrl('/'), changeFrequency: 'monthly', priority: 1, lastModified: lastModified.home },
-    { url: absoluteUrl('/sobre'), changeFrequency: 'monthly', priority: 0.8, lastModified: lastModified.sobre },
-    { url: absoluteUrl('/areas-de-atuacao'), changeFrequency: 'monthly', priority: 0.9, lastModified: lastModified.areas },
-    ...practiceAreas.map((area) => ({
-      url: absoluteUrl(`/areas-de-atuacao/${area.slug}`),
+  const pages: Page[] = [
+    { path: '/', lastModified: lastModified.home, changeFrequency: 'monthly', priority: 1 },
+    { path: '/sobre', lastModified: lastModified.sobre, changeFrequency: 'monthly', priority: 0.8 },
+    { path: '/areas-de-atuacao', lastModified: lastModified.areas, changeFrequency: 'monthly', priority: 0.9 },
+    ...getDictionary('pt').practiceAreas.map((area) => ({
+      path: `/areas-de-atuacao/${area.slug}`,
+      lastModified: lastModified.areas,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
-      lastModified: lastModified.areas,
     })),
-    { url: absoluteUrl('/contato'), changeFrequency: 'yearly', priority: 0.6, lastModified: lastModified.contato },
+    { path: '/contato', lastModified: lastModified.contato, changeFrequency: 'yearly', priority: 0.6 },
   ]
+
+  // One entry per page per language, each listing all its translations (hreflang).
+  return pages.flatMap((page) =>
+    locales.map((locale) => ({
+      url: absoluteUrl(localePath(locale, page.path)),
+      lastModified: page.lastModified,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+      alternates: { languages: languageAlternates(page.path) },
+    })),
+  )
 }

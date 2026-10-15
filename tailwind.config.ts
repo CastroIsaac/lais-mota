@@ -29,8 +29,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['var(--font-display)', 'Georgia', 'serif'],
-        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-display)', 'var(--font-display-deva)', 'Georgia', 'serif'],
+        sans: ['var(--font-body)', 'var(--font-body-deva)', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         content: '1180px',

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { defaultLocale, localeMeta, localePath, locales, type Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n'
 
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://laismotaadvocacia.com.br'
 
@@ -16,38 +18,47 @@ export const siteConfig = {
   email: 'lais_mota@outlook.com',
   // Office address (not her residence) — this is the one safe to publish.
   addressLine: 'CLN 211, Bloco A, Sala 222 — Asa Norte, Brasília-DF',
-  hoursLine: 'Atendimento presencial e online, mediante agendamento prévio',
   // TODO: add real handles once she sends them (referenced in the FAQ/posicionamento answers).
   instagramUrl: '',
   linkedinUrl: '',
 }
 
 // 1200x630 card shown when a link is shared (WhatsApp, LinkedIn, etc.).
-export const shareImage = {
-  url: '/images/og-image.jpg',
-  width: 1200,
-  height: 630,
-  alt: 'Laís Mota Advocacia — advocacia estratégica e internacional em Brasília-DF',
+export function shareImage(locale: Locale) {
+  return { url: '/images/og-image.jpg', width: 1200, height: 630, alt: getDictionary(locale).meta.shareImageAlt }
 }
 
-// Per-page title/description/canonical plus matching Open Graph tags, so shared
-// links show the page's own title. Page-level openGraph replaces the layout's
-// wholesale, which is why the image is repeated here.
-export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {
-  const url = absoluteUrl(path)
+// hreflang map for one page across every language, plus x-default (Portuguese).
+export function languageAlternates(path: string) {
+  return {
+    ...Object.fromEntries(locales.map((l) => [localeMeta[l].htmlLang, absoluteUrl(localePath(l, path))])),
+    'x-default': absoluteUrl(localePath(defaultLocale, path)),
+  }
+}
+
+// Per-page title/description/canonical/hreflang plus matching Open Graph tags.
+// `path` is the language-neutral path ('/contato'); the locale prefix is added here.
+// Page-level openGraph replaces the layout's wholesale, so the image is repeated.
+export function pageMetadata(
+  locale: Locale,
+  { title, description, path }: { title: string; description: string; path: string },
+): Metadata {
+  const url = absoluteUrl(localePath(locale, path))
+  const image = shareImage(locale)
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: languageAlternates(path) },
     openGraph: {
       title: `${title} | ${siteConfig.name}`,
       description,
       url,
       siteName: siteConfig.name,
-      locale: 'pt_BR',
+      locale: localeMeta[locale].ogLocale,
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeMeta[l].ogLocale),
       type: 'website',
-      images: [shareImage],
+      images: [image],
     },
-    twitter: { card: 'summary_large_image', images: [shareImage.url] },
+    twitter: { card: 'summary_large_image', images: [image.url] },
   }
 }
