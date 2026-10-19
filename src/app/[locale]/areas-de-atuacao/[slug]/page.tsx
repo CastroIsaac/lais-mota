@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/JsonLd'
-import { localePath, locales, type Locale } from '@/i18n/config'
+import { blogCopy, getPostsForArea } from '@/content/blog'
+import { defaultLocale, localePath, locales, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n'
 import { absoluteUrl, pageMetadata } from '@/lib/site'
 
@@ -30,6 +31,8 @@ export default async function PracticeAreaPage({ params }: Props) {
   if (!area) notFound()
   const dict = getDictionary(locale)
   const href = (path: string) => localePath(locale, path)
+  // The blog is Portuguese-only.
+  const relatedPosts = locale === defaultLocale ? getPostsForArea(area.slug) : []
 
   const url = absoluteUrl(href(`/areas-de-atuacao/${area.slug}`))
   const jsonLd = {
@@ -76,6 +79,21 @@ export default async function PracticeAreaPage({ params }: Props) {
           </li>
         ))}
       </ul>
+
+      {relatedPosts.length > 0 && (
+        <div className="reveal mt-12 border-t border-line pt-8">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{blogCopy.related}</h2>
+          <ul className="mt-4 space-y-3">
+            {relatedPosts.map((post) => (
+              <li key={post.slug}>
+                <Link href={href(`/blog/${post.slug}`)} className="font-serif text-lg text-ink-950 transition hover:text-gold-600">
+                  {post.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <Link
         href={href('/contato')}

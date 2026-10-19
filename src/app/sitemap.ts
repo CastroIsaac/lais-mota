@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { localePath, locales } from '@/i18n/config'
+import { getPosts } from '@/content/blog'
 import { getDictionary } from '@/i18n'
 import { absoluteUrl, languageAlternates } from '@/lib/site'
 
@@ -29,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // One entry per page per language, each listing all its translations (hreflang).
-  return pages.flatMap((page) =>
+  const translatedPages = pages.flatMap((page) =>
     locales.map((locale) => ({
       url: absoluteUrl(localePath(locale, page.path)),
       lastModified: page.lastModified,
@@ -38,4 +39,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: languageAlternates(page.path) },
     })),
   )
+
+  // The blog is Portuguese-only, so no hreflang; listed once a post is published.
+  const posts = getPosts()
+  const blogPages: MetadataRoute.Sitemap = posts.length
+    ? [
+        { url: absoluteUrl('/blog'), lastModified: posts[0].updatedAt ?? posts[0].publishedAt, changeFrequency: 'weekly', priority: 0.7 },
+        ...posts.map((post) => ({
+          url: absoluteUrl(`/blog/${post.slug}`),
+          lastModified: post.updatedAt ?? post.publishedAt,
+          changeFrequency: 'monthly' as const,
+          priority: 0.6,
+        })),
+      ]
+    : []
+
+  return [...translatedPages, ...blogPages]
 }
