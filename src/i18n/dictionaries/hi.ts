@@ -217,6 +217,7 @@ export const hi: Dictionary = {
     {
       slug: 'direito-empresarial',
       title: 'व्यावसायिक कानून',
+      seoTitle: 'ब्रासीलिया में व्यावसायिक कानून अधिवक्ता',
       audience: 'कंपनियाँ, साझेदार और उद्यमी',
       summary: 'कंपनियों, साझेदारों और उद्यमियों के लिए निवारक और मुकदमेबाज़ी संबंधी सलाह।',
       description:
@@ -231,6 +232,7 @@ export const hi: Dictionary = {
     {
       slug: 'direito-contratual',
       title: 'अनुबंध कानून',
+      seoTitle: 'ब्रासीलिया में अनुबंध कानून अधिवक्ता',
       audience: 'व्यक्ति और कंपनियाँ',
       summary: 'राष्ट्रीय और अंतरराष्ट्रीय अनुबंधों का रणनीतिक मसौदा, समीक्षा और वार्ता।',
       description:
@@ -245,6 +247,7 @@ export const hi: Dictionary = {
     {
       slug: 'consultoria-juridica-internacional',
       title: 'अंतरराष्ट्रीय विधिक परामर्श',
+      seoTitle: 'ब्राज़ील में अंतरराष्ट्रीय व्यापार अधिवक्ता',
       audience: 'कंपनियाँ, उद्यमी और निवेशक',
       summary: 'अंतरराष्ट्रीय व्यापार और व्यवसाय के अंतरराष्ट्रीयकरण में लगी कंपनियों के लिए सलाह।',
       description:
@@ -259,6 +262,7 @@ export const hi: Dictionary = {
     {
       slug: 'direito-civil',
       title: 'सिविल कानून',
+      seoTitle: 'ब्रासीलिया में पारिवारिक और सिविल कानून अधिवक्ता',
       audience: 'व्यक्ति',
       summary: 'पारिवारिक, संपत्ति और दायित्व संबंधी विवादों में रणनीतिक प्रतिनिधित्व।',
       description:

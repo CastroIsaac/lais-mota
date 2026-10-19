@@ -1,31 +1,34 @@
 // Every piece of on-page copy, in Portuguese. Other languages implement the same
 // shape (`Dictionary`), so TypeScript flags any string a translation is missing.
 // Practice-area slugs stay in Portuguese in every language so URLs line up.
+// `seoTitle` is the practice area's <title>: the phrase people search for, not the heading.
 export const pt = {
   meta: {
-    defaultTitle: 'Advocacia Estratégica e Internacional',
+    defaultTitle: 'Advogada em Brasília-DF',
+    // Titles lead with the search term (~60 chars max incl. the " | Laís Mota Advocacia"
+    // suffix); descriptions stay under ~155 chars so Google doesn't cut them.
     home: {
-      title: 'Laís Mota | Advocacia Estratégica e Internacional em Brasília',
+      title: 'Laís Mota | Advogada em Brasília — Empresarial e Internacional',
       description:
-        'Laís Mota é advogada em Brasília com atuação estratégica em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional.',
+        'Advogada em Brasília (Asa Norte) com atuação em Direito Empresarial, Contratos, Comércio Exterior, Família e Direito Civil. Atendimento presencial e online.',
     },
     about: {
-      title: 'Sobre Laís Mota',
+      title: 'Laís Mota, Advogada em Brasília (OAB/DF)',
       description:
-        'Conheça a trajetória de Laís Mota, advogada em Brasília com atuação em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional.',
+        'Conheça Laís Mota, advogada OAB/DF em Brasília, graduada pela UFOPA com MBA em Comércio Exterior. Atuação civil, empresarial, contratual e internacional.',
     },
     areas: {
-      title: 'Áreas de Atuação',
+      title: 'Áreas de Atuação: Empresarial, Contratos e Família',
       description:
-        'Direito empresarial, contratual, consultoria jurídica internacional e direito civil — conheça as áreas de atuação de Laís Mota.',
+        'Direito empresarial e societário, contratos nacionais e internacionais, comércio exterior, divórcio, inventário e direito civil — advogada em Brasília-DF.',
     },
     contact: {
-      title: 'Contato',
+      title: 'Agende uma Consulta em Brasília ou Online',
       description:
-        'Agende uma conversa com Laís Mota para tratar do seu caso ou das necessidades jurídicas da sua empresa.',
+        'Agende uma consulta com Laís Mota, advogada na Asa Norte, Brasília-DF. Atendimento presencial ou online por videoconferência, com hora marcada.',
     },
     // Appended to each practice area's short summary for its meta description.
-    areaDescriptionSuffix: 'Laís Mota Advocacia, Brasília-DF.',
+    areaDescriptionSuffix: 'Advogada em Brasília-DF, atendimento presencial e online.',
     shareImageAlt: 'Laís Mota Advocacia — advocacia estratégica e internacional em Brasília-DF',
   },
 
@@ -221,6 +224,7 @@ export const pt = {
     {
       slug: 'direito-empresarial',
       title: 'Direito Empresarial',
+      seoTitle: 'Advogada Empresarial e Societária em Brasília',
       audience: 'Empresas, sócios e empresários',
       summary: 'Assessoria preventiva e contenciosa a empresas, sócios e empresários.',
       description:
@@ -235,6 +239,7 @@ export const pt = {
     {
       slug: 'direito-contratual',
       title: 'Direito Contratual',
+      seoTitle: 'Advogada de Contratos em Brasília-DF',
       audience: 'Pessoas físicas e empresas',
       summary: 'Elaboração, revisão e negociação estratégica de contratos nacionais e internacionais.',
       description:
@@ -249,6 +254,7 @@ export const pt = {
     {
       slug: 'consultoria-juridica-internacional',
       title: 'Consultoria Jurídica Internacional',
+      seoTitle: 'Advogada de Comércio Exterior e Contratos Internacionais',
       audience: 'Empresas, empresários e investidores',
       summary:
         'Assessoria a empresas envolvidas em relações comerciais internacionais e internacionalização de negócios.',
@@ -264,8 +270,9 @@ export const pt = {
     {
       slug: 'direito-civil',
       title: 'Direito Civil',
+      seoTitle: 'Advogada de Família e Direito Civil em Brasília',
       audience: 'Pessoas físicas',
-      summary: 'Atuação estratégica em conflitos familiares, patrimoniais e obrigacionais.',
+      summary: 'Divórcio, união estável, inventário e conflitos familiares, patrimoniais e obrigacionais.',
       description:
         'Atuação estratégica em conflitos familiares, patrimoniais e obrigacionais, incluindo divórcios, reconhecimento e dissolução de união estável, inventários, questões patrimoniais, responsabilidade civil e demais demandas civis. Os clientes são predominantemente pessoas físicas que enfrentam questões familiares, patrimoniais ou obrigacionais relevantes.',
       topics: [

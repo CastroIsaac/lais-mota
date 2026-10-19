@@ -221,6 +221,7 @@ export const es: Dictionary = {
     {
       slug: 'direito-empresarial',
       title: 'Derecho Empresarial',
+      seoTitle: 'Abogada de Derecho Empresarial en Brasilia',
       audience: 'Empresas, socios y empresarios',
       summary: 'Asesoría preventiva y contenciosa a empresas, socios y empresarios.',
       description:
@@ -235,6 +236,7 @@ export const es: Dictionary = {
     {
       slug: 'direito-contratual',
       title: 'Derecho Contractual',
+      seoTitle: 'Abogada de Contratos en Brasilia, Brasil',
       audience: 'Personas físicas y empresas',
       summary: 'Redacción, revisión y negociación estratégica de contratos nacionales e internacionales.',
       description:
@@ -249,6 +251,7 @@ export const es: Dictionary = {
     {
       slug: 'consultoria-juridica-internacional',
       title: 'Consultoría Jurídica Internacional',
+      seoTitle: 'Abogada de Comercio Exterior y Contratos Internacionales',
       audience: 'Empresas, empresarios e inversores',
       summary:
         'Asesoría a empresas involucradas en relaciones comerciales internacionales y en la internacionalización de negocios.',
@@ -264,6 +267,7 @@ export const es: Dictionary = {
     {
       slug: 'direito-civil',
       title: 'Derecho Civil',
+      seoTitle: 'Abogada de Familia y Derecho Civil en Brasilia',
       audience: 'Personas físicas',
       summary: 'Actuación estratégica en conflictos familiares, patrimoniales y de obligaciones.',
       description:

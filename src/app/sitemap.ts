@@ -6,10 +6,10 @@ import { absoluteUrl, languageAlternates } from '@/lib/site'
 // Date each page's content last changed. Bump the entry when you edit that page —
 // a build-time `new Date()` would tell Google everything changed on every deploy.
 const lastModified = {
-  home: '2026-10-15',
-  sobre: '2026-10-15',
-  areas: '2026-10-15',
-  contato: '2026-10-15',
+  home: '2026-10-19',
+  sobre: '2026-10-19',
+  areas: '2026-10-19',
+  contato: '2026-10-19',
 }
 
 type Page = { path: string; lastModified: string; changeFrequency: 'monthly' | 'yearly'; priority: number }

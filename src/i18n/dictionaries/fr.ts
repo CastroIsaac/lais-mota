@@ -221,6 +221,7 @@ export const fr: Dictionary = {
     {
       slug: 'direito-empresarial',
       title: 'Droit des affaires',
+      seoTitle: 'Avocate en droit des affaires à Brasília',
       audience: 'Entreprises, associés et chefs d’entreprise',
       summary: 'Conseil préventif et contentieux pour les entreprises, les associés et les chefs d’entreprise.',
       description:
@@ -235,6 +236,7 @@ export const fr: Dictionary = {
     {
       slug: 'direito-contratual',
       title: 'Droit des contrats',
+      seoTitle: 'Avocate en droit des contrats à Brasília',
       audience: 'Particuliers et entreprises',
       summary: 'Rédaction, révision et négociation stratégique de contrats nationaux et internationaux.',
       description:
@@ -249,6 +251,7 @@ export const fr: Dictionary = {
     {
       slug: 'consultoria-juridica-internacional',
       title: 'Conseil juridique international',
+      seoTitle: 'Avocate en commerce international au Brésil',
       audience: 'Entreprises, chefs d’entreprise et investisseurs',
       summary:
         'Conseil aux entreprises engagées dans des relations commerciales internationales et dans l’internationalisation de leur activité.',
@@ -264,6 +267,7 @@ export const fr: Dictionary = {
     {
       slug: 'direito-civil',
       title: 'Droit civil',
+      seoTitle: 'Avocate en droit de la famille à Brasília',
       audience: 'Particuliers',
       summary: 'Intervention stratégique dans les litiges familiaux, patrimoniaux et en matière d’obligations.',
       description:

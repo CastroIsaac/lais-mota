@@ -217,6 +217,7 @@ export const en: Dictionary = {
     {
       slug: 'direito-empresarial',
       title: 'Business Law',
+      seoTitle: 'Business Law Attorney in Brasília, Brazil',
       audience: 'Companies, partners and business owners',
       summary: 'Preventive and litigation counsel for companies, partners and business owners.',
       description:
@@ -231,6 +232,7 @@ export const en: Dictionary = {
     {
       slug: 'direito-contratual',
       title: 'Contract Law',
+      seoTitle: 'Contract Lawyer in Brasília, Brazil',
       audience: 'Individuals and companies',
       summary: 'Strategic drafting, review and negotiation of domestic and international contracts.',
       description:
@@ -245,6 +247,7 @@ export const en: Dictionary = {
     {
       slug: 'consultoria-juridica-internacional',
       title: 'International Legal Consulting',
+      seoTitle: 'International Trade & Contracts Lawyer in Brazil',
       audience: 'Companies, business owners and investors',
       summary: 'Counsel for companies engaged in international trade and the internationalization of their business.',
       description:
@@ -259,6 +262,7 @@ export const en: Dictionary = {
     {
       slug: 'direito-civil',
       title: 'Civil Law',
+      seoTitle: 'Family & Civil Law Attorney in Brasília',
       audience: 'Individuals',
       summary: 'Strategic representation in family, property and obligations disputes.',
       description:
