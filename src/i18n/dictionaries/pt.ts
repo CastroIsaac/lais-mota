@@ -216,6 +216,7 @@ export const pt = {
   },
 
   whatsappLabel: 'Falar pelo WhatsApp',
+  whatsappGreeting: 'Olá! Vim pelo site e gostaria de falar com a Dra. Laís Mota.',
 
   practiceAreas: [
     {

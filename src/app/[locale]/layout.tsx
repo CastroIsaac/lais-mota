@@ -160,7 +160,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <Header locale={locale} nav={dict.nav} />
         <main>{children}</main>
         <Footer locale={locale} dict={dict} />
-        <WhatsAppFloat label={dict.whatsappLabel} />
+        <WhatsAppFloat label={dict.whatsappLabel} greeting={dict.whatsappGreeting} />
         <Analytics />
       </body>
     </html>

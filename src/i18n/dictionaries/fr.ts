@@ -216,6 +216,7 @@ export const fr: Dictionary = {
   },
 
   whatsappLabel: 'Écrire sur WhatsApp',
+  whatsappGreeting: "Bonjour ! Je viens du site et j'aimerais parler avec Me Laís Mota.",
 
   practiceAreas: [
     {

@@ -1,0 +1,8 @@
+# HTTPS automático (Let's Encrypt) para o n8n.
+{
+    email isaaccraftbr@gmail.com
+}
+
+{$N8N_DOMAIN} {
+    reverse_proxy n8n:5678
+}

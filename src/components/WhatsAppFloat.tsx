@@ -1,9 +1,10 @@
 import { siteConfig } from '@/lib/site'
 
-export function WhatsAppFloat({ label }: { label: string }) {
+// The pre-filled greeting tells the WhatsApp assistant the contact came from the site.
+export function WhatsAppFloat({ label, greeting }: { label: string; greeting: string }) {
   return (
     <a
-      href={siteConfig.whatsappUrl}
+      href={`${siteConfig.whatsappUrl}?text=${encodeURIComponent(greeting)}`}
       target="_blank"
       rel="noreferrer"
       data-track="botao-flutuante"

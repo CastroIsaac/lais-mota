@@ -212,6 +212,7 @@ export const hi: Dictionary = {
   },
 
   whatsappLabel: 'WhatsApp पर बात करें',
+  whatsappGreeting: 'नमस्ते! मैं वेबसाइट से आया/आई हूँ और Laís Mota से बात करना चाहता/चाहती हूँ।',
 
   practiceAreas: [
     {
