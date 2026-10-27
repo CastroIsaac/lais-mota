@@ -19,13 +19,13 @@ export const siteConfig = {
   // Office address (not her residence) — this is the one safe to publish.
   addressLine: 'CLN 211, Bloco A, Sala 222 — Asa Norte, Brasília-DF',
   instagramUrl: 'https://www.instagram.com/laiis_motta/',
-  // Google Maps search for the office. Once the Google Business Profile exists, swap this
-  // for the profile's own share link so the map, reviews and site all point at one place.
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=CLN+211+Bloco+A+Asa+Norte+Bras%C3%ADlia+DF',
+  // Share link of her Google Business Profile ("Laís Mota Advocacia"), so the site, the map
+  // and the reviews all point at the same listing.
+  mapsUrl: 'https://share.google/AQEPcnqogvcfYlTn0',
   mapEmbedUrl: 'https://www.google.com/maps?q=CLN+211+Bloco+A+Asa+Norte+Bras%C3%ADlia+DF&output=embed',
   // Her profiles elsewhere (schema.org `sameAs`): Google uses them to confirm who she is.
-  // Add LinkedIn, JusBrasil, the Google Business Profile… here as they're created.
-  profiles: ['https://www.instagram.com/laiis_motta/'],
+  // Add LinkedIn, JusBrasil… here as they're created.
+  profiles: ['https://www.instagram.com/laiis_motta/', 'https://share.google/AQEPcnqogvcfYlTn0'],
 }
 
 // 1200x630 card shown when a link is shared (WhatsApp, LinkedIn, etc.).
