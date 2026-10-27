@@ -169,7 +169,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const officeId = `${siteUrl}/#escritorio`
   const attorneyId = `${siteUrl}/#lais-mota`
-  const sameAs = [siteConfig.instagramUrl]
+  const sameAs = siteConfig.profiles
   const areaTitles = dict.practiceAreas.map((area) => area.title)
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -190,8 +190,18 @@ export default async function LocaleLayout({ children, params }: Props) {
           addressRegion: 'DF',
           addressCountry: 'BR',
         },
+        hasMap: siteConfig.mapsUrl,
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer service',
+          telephone: siteConfig.phoneDisplay,
+          email: siteConfig.email,
+          areaServed: 'BR',
+          availableLanguage: ['Portuguese'],
+        },
         areaServed: [
           { '@type': 'City', name: 'Brasília' },
+          { '@type': 'AdministrativeArea', name: 'Distrito Federal' },
           { '@type': 'Country', name: 'Brasil' },
         ],
         knowsLanguage: ['pt-BR'],

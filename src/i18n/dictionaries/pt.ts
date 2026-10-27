@@ -46,8 +46,8 @@ export const pt = {
   },
 
   home: {
-    heroAlt: 'Laís Mota, advogada',
-    eyebrow: 'Advocacia estratégica e internacional',
+    heroAlt: 'Laís Mota, advogada em Brasília-DF',
+    eyebrow: 'Advogada em Brasília · Atuação nacional e internacional',
     title: 'Estratégia jurídica para decisões que não podem dar errado.',
     lead: 'Assessoria jurídica personalizada em Direito Civil, Empresarial, Contratual e Consultoria Jurídica Internacional — para pessoas físicas e para empresas com atuação no Brasil e no exterior.',
     ctaPrimary: 'Agendar uma conversa',
@@ -198,6 +198,8 @@ export const pt = {
     office: 'Escritório',
     hours: 'Atendimento',
     hoursValue: 'Atendimento presencial e online, mediante agendamento prévio',
+    mapTitle: 'Mapa do escritório na Asa Norte, Brasília-DF',
+    mapLink: 'Ver no Google Maps',
   },
 
   form: {

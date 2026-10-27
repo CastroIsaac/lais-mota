@@ -41,8 +41,8 @@ export const es: Dictionary = {
   },
 
   home: {
-    heroAlt: 'Laís Mota, abogada',
-    eyebrow: 'Abogacía estratégica e internacional',
+    heroAlt: 'Laís Mota, abogada en Brasilia, Brasil',
+    eyebrow: 'Abogada en Brasilia · Actuación nacional e internacional',
     title: 'Estrategia jurídica para decisiones que no pueden salir mal.',
     lead: 'Asesoría jurídica personalizada en Derecho Civil, Empresarial, Contractual y Consultoría Jurídica Internacional, para personas físicas y para empresas que operan en Brasil y en el exterior.',
     ctaPrimary: 'Agendar una reunión',
@@ -196,6 +196,8 @@ export const es: Dictionary = {
     office: 'Oficina',
     hours: 'Atención',
     hoursValue: 'Presencial y en línea, con cita previa',
+    mapTitle: 'Mapa de la oficina en Asa Norte, Brasilia',
+    mapLink: 'Ver en Google Maps',
   },
 
   form: {

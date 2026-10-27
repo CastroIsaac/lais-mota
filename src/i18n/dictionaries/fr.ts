@@ -41,8 +41,8 @@ export const fr: Dictionary = {
   },
 
   home: {
-    heroAlt: 'Laís Mota, avocate',
-    eyebrow: 'Cabinet d’avocat stratégique et international',
+    heroAlt: 'Laís Mota, avocate à Brasília, Brésil',
+    eyebrow: 'Avocate à Brasília · Pratique nationale et internationale',
     title: 'Une stratégie juridique pour les décisions qui ne laissent pas droit à l’erreur.',
     lead: 'Conseil juridique personnalisé en droit civil, droit des affaires, droit des contrats et conseil juridique international — pour les particuliers et pour les entreprises actives au Brésil et à l’étranger.',
     ctaPrimary: 'Prendre rendez-vous',
@@ -196,6 +196,8 @@ export const fr: Dictionary = {
     office: 'Cabinet',
     hours: 'Rendez-vous',
     hoursValue: 'En personne et en ligne, sur rendez-vous',
+    mapTitle: 'Plan du cabinet à Asa Norte, Brasília',
+    mapLink: 'Voir sur Google Maps',
   },
 
   form: {

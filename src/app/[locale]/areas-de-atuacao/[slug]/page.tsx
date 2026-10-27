@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/JsonLd'
 import { blogCopy, getPostsForArea } from '@/content/blog'
+import { getServicesForArea, servicesCopy } from '@/content/services'
 import { defaultLocale, localePath, locales, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n'
 import { absoluteUrl, pageMetadata } from '@/lib/site'
@@ -33,6 +34,8 @@ export default async function PracticeAreaPage({ params }: Props) {
   const href = (path: string) => localePath(locale, path)
   // The blog is Portuguese-only.
   const relatedPosts = locale === defaultLocale ? getPostsForArea(area.slug) : []
+  // Service pages are Portuguese-only too.
+  const services = locale === defaultLocale ? getServicesForArea(area.slug) : []
 
   const url = absoluteUrl(href(`/areas-de-atuacao/${area.slug}`))
   const jsonLd = {
@@ -79,6 +82,25 @@ export default async function PracticeAreaPage({ params }: Props) {
           </li>
         ))}
       </ul>
+
+      {services.length > 0 && (
+        <div className="reveal mt-12 border-t border-line pt-8">
+          <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{servicesCopy.heading}</h2>
+          <ul className="mt-4 grid gap-px overflow-hidden rounded-sm bg-line sm:grid-cols-2">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={href(`/areas-de-atuacao/${area.slug}/${service.slug}`)}
+                  className="group flex h-full flex-col bg-white p-6 transition hover:bg-gold-50"
+                >
+                  <span className="font-serif text-lg text-ink-950 transition group-hover:text-gold-600">{service.title}</span>
+                  <span className="mt-2 text-sm leading-relaxed text-ink-500">{service.summary}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {relatedPosts.length > 0 && (
         <div className="reveal mt-12 border-t border-line pt-8">

@@ -37,6 +37,16 @@ export default async function ContatoPage({ params }: Props) {
           <div>
             <dt className="font-semibold text-ink-950">{t.office}</dt>
             <dd className="mt-1 text-ink-500">{siteConfig.addressLine}</dd>
+            <dd className="mt-1">
+              <a
+                href={siteConfig.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-gold-600 transition hover:text-gold-700"
+              >
+                {t.mapLink} <span aria-hidden="true">↗</span>
+              </a>
+            </dd>
           </div>
           <div>
             <dt className="font-semibold text-ink-950">{t.hours}</dt>
@@ -46,6 +56,15 @@ export default async function ContatoPage({ params }: Props) {
             <dt className="font-semibold text-ink-950">{siteConfig.oabNumber}</dt>
           </div>
         </dl>
+
+        {/* Ties the site to the Brasília address for Google; lazy so it costs nothing above the fold. */}
+        <iframe
+          src={siteConfig.mapEmbedUrl}
+          title={t.mapTitle}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="mt-10 aspect-[4/3] w-full rounded-sm border border-line"
+        />
       </div>
 
       <div className="reveal stagger-1">

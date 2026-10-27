@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { localePath, locales } from '@/i18n/config'
 import { getPosts } from '@/content/blog'
+import { getServices } from '@/content/services'
 import { getDictionary } from '@/i18n'
 import { absoluteUrl, languageAlternates } from '@/lib/site'
 
@@ -54,5 +55,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ]
     : []
 
-  return [...translatedPages, ...blogPages]
+  // Service pages are Portuguese-only as well; listed once published.
+  const servicePages: MetadataRoute.Sitemap = getServices().map((service) => ({
+    url: absoluteUrl(`/areas-de-atuacao/${service.area}/${service.slug}`),
+    lastModified: service.updatedAt,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  return [...translatedPages, ...servicePages, ...blogPages]
 }
