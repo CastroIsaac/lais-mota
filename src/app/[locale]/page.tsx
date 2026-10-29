@@ -92,9 +92,13 @@ export default async function HomePage({ params }: Props) {
             headline up over her face on shorter phones. Desktop resets via md:inset-y-0. */}
         <div className="absolute inset-x-0 top-[52svh] bottom-0 z-10 flex flex-col justify-end px-6 pb-10 pt-4 text-white md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
           <div className="reveal w-full max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">{t.eyebrow}</p>
-            <h1 className="mt-3 font-serif text-[1.7rem] leading-[1.15] md:mt-5 md:text-5xl md:leading-[1.1]">
-              {t.title}
+            {/* The eyebrow is part of the h1 so the heading carries the search term
+                ("Advogada em Brasília"), while it still looks like the small line above. */}
+            <h1>
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">{t.eyebrow}</span>
+              <span className="mt-3 block font-serif text-[1.7rem] leading-[1.15] md:mt-5 md:text-5xl md:leading-[1.1]">
+                {t.title}
+              </span>
             </h1>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-white/75 md:mt-5 md:text-base">
               {t.lead}

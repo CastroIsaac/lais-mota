@@ -20,9 +20,14 @@ export const siteConfig = {
   email: 'lais_mota@outlook.com',
   // Office address (not her residence) — this is the one safe to publish.
   addressLine: 'CLN 211, Bloco A, Sala 222 — Asa Norte, Brasília-DF',
-  // TODO: add real handles once she sends them (referenced in the FAQ/posicionamento answers).
-  instagramUrl: '',
-  linkedinUrl: '',
+  instagramUrl: 'https://www.instagram.com/laiis_motta/',
+  // Share link of her Google Business Profile ("Laís Mota Advocacia"), so the site, the map
+  // and the reviews all point at the same listing.
+  mapsUrl: 'https://share.google/AQEPcnqogvcfYlTn0',
+  mapEmbedUrl: 'https://www.google.com/maps?q=CLN+211+Bloco+A+Asa+Norte+Bras%C3%ADlia+DF&output=embed',
+  // Her profiles elsewhere (schema.org `sameAs`): Google uses them to confirm who she is.
+  // Add LinkedIn, JusBrasil… here as they're created.
+  profiles: ['https://www.instagram.com/laiis_motta/', 'https://share.google/AQEPcnqogvcfYlTn0'],
 }
 
 // 1200x630 card shown when a link is shared (WhatsApp, LinkedIn, etc.).
@@ -43,6 +48,8 @@ export function languageAlternates(path: string) {
 // Per-page title/description/canonical/hreflang plus matching Open Graph tags.
 // `path` is the language-neutral path ('/contato'); the locale prefix is added here.
 // Page-level openGraph replaces the layout's wholesale, so the image is repeated.
+// `translated: false` is for Portuguese-only pages (the blog): no hreflang pointing
+// at translations that don't exist.
 export function pageMetadata(
   locale: Locale,
   {
@@ -50,7 +57,8 @@ export function pageMetadata(
     description,
     path,
     standalone = false,
-  }: { title: string; description: string; path: string; standalone?: boolean },
+    translated = true,
+  }: { title: string; description: string; path: string; standalone?: boolean; translated?: boolean },
 ): Metadata {
   const url = absoluteUrl(localePath(locale, path))
   const image = shareImage(locale)
@@ -61,14 +69,14 @@ export function pageMetadata(
   return {
     title: { absolute: fullTitle },
     description,
-    alternates: { canonical: url, languages: languageAlternates(path) },
+    alternates: translated ? { canonical: url, languages: languageAlternates(path) } : { canonical: url },
     openGraph: {
       title: fullTitle,
       description,
       url,
       siteName: siteConfig.name,
       locale: localeMeta[locale].ogLocale,
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeMeta[l].ogLocale),
+      ...(translated && { alternateLocale: locales.filter((l) => l !== locale).map((l) => localeMeta[l].ogLocale) }),
       type: 'website',
       images: [image],
     },

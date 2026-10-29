@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/JsonLd'
-import { localePath, locales, type Locale } from '@/i18n/config'
+import { blogCopy, getPostsForArea } from '@/content/blog'
+import { getServicesForArea, servicesCopy } from '@/content/services'
+import { defaultLocale, localePath, locales, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n'
 import { absoluteUrl, pageMetadata } from '@/lib/site'
 
@@ -36,6 +38,9 @@ export default async function PracticeAreaPage({ params }: Props) {
     area.front === 'internacional'
       ? { name: front.name, path: '/advocacia-internacional' }
       : { name: dict.nav.areas, path: '/areas-de-atuacao' }
+  // The blog and the service pages are Portuguese-only.
+  const relatedPosts = locale === defaultLocale ? getPostsForArea(area.slug) : []
+  const servicePages = locale === defaultLocale ? getServicesForArea(area.slug) : []
   const related = dict.practiceAreas.filter((other) => other.front === area.front && other.slug !== area.slug)
 
   const url = absoluteUrl(href(`/areas-de-atuacao/${area.slug}`))
@@ -118,6 +123,40 @@ export default async function PracticeAreaPage({ params }: Props) {
             ))}
           </ul>
         </div>
+
+        {servicePages.length > 0 && (
+          <div className="reveal mt-12 border-t border-line pt-8">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{servicesCopy.heading}</h2>
+            <ul className="mt-4 grid border-l border-t border-line sm:grid-cols-2">
+              {servicePages.map((service) => (
+                <li key={service.slug} className="border-b border-r border-line">
+                  <Link
+                    href={href(`/areas-de-atuacao/${area.slug}/${service.slug}`)}
+                    className="group flex h-full flex-col bg-white p-6 transition hover:bg-gold-50"
+                  >
+                    <span className="font-serif text-lg text-ink-950 transition group-hover:text-gold-600">{service.title}</span>
+                    <span className="mt-2 text-sm leading-relaxed text-ink-500">{service.summary}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {relatedPosts.length > 0 && (
+          <div className="reveal mt-12 border-t border-line pt-8">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{blogCopy.related}</h2>
+            <ul className="mt-4 space-y-3">
+              {relatedPosts.map((post) => (
+                <li key={post.slug}>
+                  <Link href={href(`/blog/${post.slug}`)} className="font-serif text-lg text-ink-950 transition hover:text-gold-600">
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <Link
           href={href('/contato')}

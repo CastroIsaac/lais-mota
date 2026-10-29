@@ -7,7 +7,8 @@ import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { Analytics } from '@/components/Analytics'
 import { JsonLd } from '@/components/JsonLd'
-import { isLocale, localeMeta, localePath, locales, type Locale } from '@/i18n/config'
+import { blogCopy, hasBlog } from '@/content/blog'
+import { defaultLocale, isLocale, localeMeta, localePath, locales, type Locale } from '@/i18n/config'
 import { frontOrder, getDictionary } from '@/i18n'
 import { absoluteUrl, shareImage, siteConfig, siteUrl } from '@/lib/site'
 import '../globals.css'
@@ -44,6 +45,8 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>): Pro
     applicationName: siteConfig.name,
     authors: [{ name: siteConfig.attorneyName }],
     description: dict.meta.home.description,
+    // Google and Bing ignore the keywords tag for ranking; it costs nothing and some
+    // smaller engines/directories still read it. The lists live in the dictionaries.
     keywords: dict.meta.keywords,
     metadataBase: new URL(siteUrl),
     openGraph: {
@@ -65,10 +68,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!isLocale(param)) notFound()
   const locale: Locale = param
   const dict = getDictionary(locale)
+  // The blog is Portuguese-only, so only the Portuguese site links to it.
+  const showBlog = locale === defaultLocale && hasBlog()
 
   const officeId = `${siteUrl}/#escritorio`
   const attorneyId = `${siteUrl}/#lais-mota`
-  const sameAs = [siteConfig.instagramUrl, siteConfig.linkedinUrl].filter(Boolean)
+  const sameAs = siteConfig.profiles
   const areaTitles = dict.practiceAreas.map((area) => area.title)
   // The two fronts as an OfferCatalog, each listing its practice areas as services.
   const offerCatalog = {
@@ -110,15 +115,25 @@ export default async function LocaleLayout({ children, params }: Props) {
           addressRegion: 'DF',
           addressCountry: 'BR',
         },
+        hasMap: siteConfig.mapsUrl,
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer service',
+          telephone: siteConfig.phoneDisplay,
+          email: siteConfig.email,
+          areaServed: 'BR',
+          availableLanguage: ['Portuguese', 'English'],
+        },
         areaServed: [
           { '@type': 'City', name: 'Brasília' },
+          { '@type': 'AdministrativeArea', name: 'Distrito Federal' },
           { '@type': 'Country', name: 'Brasil' },
         ],
         knowsLanguage: locales.map((l) => localeMeta[l].htmlLang),
         knowsAbout: areaTitles,
         hasOfferCatalog: offerCatalog,
         founder: { '@id': attorneyId },
-        ...(sameAs.length ? { sameAs } : {}),
+        sameAs,
       },
       {
         '@type': 'Person',
@@ -132,7 +147,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         knowsAbout: areaTitles,
         knowsLanguage: locales.map((l) => localeMeta[l].htmlLang),
         alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidade Federal do Oeste do Pará (UFOPA)' },
-        ...(sameAs.length ? { sameAs } : {}),
+        sameAs,
       },
       {
         '@type': 'WebSite',
@@ -153,9 +168,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="font-sans">
         <JsonLd data={jsonLd} />
         <ScrollReveal />
-        <Header locale={locale} nav={dict.nav} />
+        <Header locale={locale} nav={dict.nav} blogLabel={showBlog ? blogCopy.label : undefined} />
         <main>{children}</main>
-        <Footer locale={locale} dict={dict} />
+        <Footer locale={locale} dict={dict} blogLabel={showBlog ? blogCopy.label : undefined} />
         <WhatsAppFloat label={dict.whatsappLabel} greeting={dict.whatsappGreeting} />
         <Analytics />
       </body>

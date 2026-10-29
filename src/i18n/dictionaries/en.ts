@@ -480,8 +480,8 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroAlt: 'Laís Mota, lawyer',
-    eyebrow: 'Boutique, strategic and international legal practice',
+    heroAlt: 'Laís Mota, lawyer in Brasília, Brazil',
+    eyebrow: 'Lawyer in Brazil · Strategic and international practice',
     title: 'Legal strategy for decisions that cannot go wrong.',
     lead: 'A strategic practice for civil, business and property matters, and an international practice for companies, investors and transactions between Brazil and other countries.',
     ctaPrimary: 'Book a meeting',
@@ -713,6 +713,8 @@ export const en: Dictionary = {
     office: 'Office',
     hours: 'Meetings',
     hoursValue: 'In person and online, by prior appointment',
+    mapTitle: 'Map of the office in Asa Norte, Brasília',
+    mapLink: 'Open in Google Maps',
   },
 
   form: {

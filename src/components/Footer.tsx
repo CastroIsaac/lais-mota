@@ -4,7 +4,7 @@ import { localePath, type Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n'
 import { siteConfig } from '@/lib/site'
 
-export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Footer({ locale, dict, blogLabel }: { locale: Locale; dict: Dictionary; blogLabel?: string }) {
   const { footer, nav } = dict
   return (
     <footer className="border-t border-ink-950/10 bg-ink-950 text-white">
@@ -34,22 +34,16 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/sobre')}>{nav.about}</Link></li>
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/areas-de-atuacao')}>{nav.areas}</Link></li>
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/advocacia-internacional')}>{dict.fronts.internacional.name}</Link></li>
+            {blogLabel && (
+              <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/blog')}>{blogLabel}</Link></li>
+            )}
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/contato')}>{nav.contact}</Link></li>
           </ul>
-          {(siteConfig.instagramUrl || siteConfig.linkedinUrl) && (
-            <div className="mt-6 flex gap-4">
-              {siteConfig.instagramUrl && (
-                <a className="hover:text-gold-400" href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
-                  Instagram
-                </a>
-              )}
-              {siteConfig.linkedinUrl && (
-                <a className="hover:text-gold-400" href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              )}
-            </div>
-          )}
+          <div className="mt-6 flex gap-4">
+            <a className="hover:text-gold-400" href={siteConfig.instagramUrl} target="_blank" rel="noreferrer">
+              Instagram
+            </a>
+          </div>
         </nav>
       </div>
 
