@@ -24,28 +24,6 @@ const flags: Record<Locale, React.ReactNode> = {
       ))}
     </>
   ),
-  es: (
-    <>
-      <rect width="32" height="32" fill="#aa151b" />
-      <rect y="8" width="32" height="16" fill="#f1bf00" />
-    </>
-  ),
-  fr: (
-    <>
-      <rect width="11" height="32" fill="#0055a4" />
-      <rect x="10.6" width="10.8" height="32" fill="#fff" />
-      <rect x="21" width="11" height="32" fill="#ef4135" />
-    </>
-  ),
-  hi: (
-    <>
-      <rect width="32" height="11" fill="#ff9933" />
-      <rect y="10.6" width="32" height="10.8" fill="#fff" />
-      <rect y="21" width="32" height="11" fill="#138808" />
-      <circle cx="16" cy="16" r="3.6" fill="none" stroke="#000080" strokeWidth="0.8" />
-      <circle cx="16" cy="16" r="0.8" fill="#000080" />
-    </>
-  ),
 }
 
 export function Flag({ locale, className = 'h-5 w-5' }: { locale: Locale; className?: string }) {

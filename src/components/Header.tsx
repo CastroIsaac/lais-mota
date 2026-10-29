@@ -12,6 +12,7 @@ export function Header({ locale, nav }: { locale: Locale; nav: Dictionary['nav']
     { label: nav.home, href: localePath(locale, '/') },
     { label: nav.about, href: localePath(locale, '/sobre') },
     { label: nav.areas, href: localePath(locale, '/areas-de-atuacao') },
+    { label: nav.international, href: localePath(locale, '/advocacia-internacional') },
     { label: nav.contact, href: localePath(locale, '/contato') },
   ]
   const [isMenuOpen, setIsMenuOpen] = useState(false)

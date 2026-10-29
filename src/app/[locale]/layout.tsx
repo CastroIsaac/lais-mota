@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Inter, Lora, Noto_Sans_Devanagari, Noto_Serif_Devanagari } from 'next/font/google'
+import { Inter, Lora } from 'next/font/google'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFloat } from '@/components/WhatsAppFloat'
@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/ScrollReveal'
 import { Analytics } from '@/components/Analytics'
 import { JsonLd } from '@/components/JsonLd'
 import { isLocale, localeMeta, localePath, locales, type Locale } from '@/i18n/config'
-import { getDictionary } from '@/i18n'
+import { frontOrder, getDictionary } from '@/i18n'
 import { absoluteUrl, shareImage, siteConfig, siteUrl } from '@/lib/site'
 import '../globals.css'
 
@@ -24,24 +24,6 @@ const inter = Inter({
   weight: ['400', '500', '600'],
   variable: '--font-body',
   display: 'swap',
-})
-
-// Lora/Inter have no Devanagari glyphs. These sit next in the font stacks
-// (tailwind.config.ts); browsers only download them when Hindi text is on the page.
-const devanagariSerif = Noto_Serif_Devanagari({
-  subsets: ['devanagari'],
-  weight: ['500', '600'],
-  variable: '--font-display-deva',
-  display: 'swap',
-  preload: false,
-})
-
-const devanagariSans = Noto_Sans_Devanagari({
-  subsets: ['devanagari'],
-  weight: ['400', '500', '600'],
-  variable: '--font-body-deva',
-  display: 'swap',
-  preload: false,
 })
 
 type Props = Readonly<{ children: React.ReactNode; params: Promise<{ locale: string }> }>
@@ -62,17 +44,7 @@ export async function generateMetadata({ params }: Omit<Props, 'children'>): Pro
     applicationName: siteConfig.name,
     authors: [{ name: siteConfig.attorneyName }],
     description: dict.meta.home.description,
-    ...(locale === 'pt' && {
-      keywords: [
-        'Laís Mota advocacia',
-        'advogada Brasília',
-        'advogada direito empresarial',
-        'advogada direito civil Brasília',
-        'consultoria jurídica internacional',
-        'advogada contratos internacionais',
-        'advogada direito de família Brasília',
-      ],
-    }),
+    keywords: dict.meta.keywords,
     metadataBase: new URL(siteUrl),
     openGraph: {
       locale: localeMeta[locale].ogLocale,
@@ -98,6 +70,26 @@ export default async function LocaleLayout({ children, params }: Props) {
   const attorneyId = `${siteUrl}/#lais-mota`
   const sameAs = [siteConfig.instagramUrl, siteConfig.linkedinUrl].filter(Boolean)
   const areaTitles = dict.practiceAreas.map((area) => area.title)
+  // The two fronts as an OfferCatalog, each listing its practice areas as services.
+  const offerCatalog = {
+    '@type': 'OfferCatalog',
+    name: dict.nav.areas,
+    itemListElement: frontOrder.map((front) => ({
+      '@type': 'OfferCatalog',
+      name: dict.fronts[front].name,
+      description: dict.fronts[front].description,
+      itemListElement: dict.practiceAreas
+        .filter((area) => area.front === front)
+        .map((area) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: area.title,
+            url: absoluteUrl(localePath(locale, `/areas-de-atuacao/${area.slug}`)),
+          },
+        })),
+    })),
+  }
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -105,6 +97,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         '@type': 'LegalService',
         '@id': officeId,
         name: siteConfig.name,
+        description: dict.meta.home.description,
         url: absoluteUrl(localePath(locale, '/')),
         logo: absoluteUrl('/images/lais-logo.png'),
         image: absoluteUrl('/images/lais-mota-image.jpeg'),
@@ -121,8 +114,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           { '@type': 'City', name: 'Brasília' },
           { '@type': 'Country', name: 'Brasil' },
         ],
-        knowsLanguage: ['pt-BR'],
+        knowsLanguage: locales.map((l) => localeMeta[l].htmlLang),
         knowsAbout: areaTitles,
+        hasOfferCatalog: offerCatalog,
         founder: { '@id': attorneyId },
         ...(sameAs.length ? { sameAs } : {}),
       },
@@ -136,6 +130,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         worksFor: { '@id': officeId },
         identifier: { '@type': 'PropertyValue', propertyID: 'OAB/DF', value: siteConfig.oabNumber.replace(/^OAB\/DF nº /, '') },
         knowsAbout: areaTitles,
+        knowsLanguage: locales.map((l) => localeMeta[l].htmlLang),
+        alumniOf: { '@type': 'CollegeOrUniversity', name: 'Universidade Federal do Oeste do Pará (UFOPA)' },
         ...(sameAs.length ? { sameAs } : {}),
       },
       {
@@ -152,7 +148,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={localeMeta[locale].htmlLang}
-      className={`${lora.variable} ${inter.variable} ${devanagariSerif.variable} ${devanagariSans.variable}`}
+      className={`${lora.variable} ${inter.variable}`}
     >
       <body className="font-sans">
         <JsonLd data={jsonLd} />

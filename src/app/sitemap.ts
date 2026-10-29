@@ -6,10 +6,11 @@ import { absoluteUrl, languageAlternates } from '@/lib/site'
 // Date each page's content last changed. Bump the entry when you edit that page —
 // a build-time `new Date()` would tell Google everything changed on every deploy.
 const lastModified = {
-  home: '2026-10-15',
-  sobre: '2026-10-15',
-  areas: '2026-10-15',
-  contato: '2026-10-15',
+  home: '2026-10-29',
+  sobre: '2026-10-29',
+  areas: '2026-10-29',
+  internacional: '2026-10-29',
+  contato: '2026-10-29',
 }
 
 type Page = { path: string; lastModified: string; changeFrequency: 'monthly' | 'yearly'; priority: number }
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/', lastModified: lastModified.home, changeFrequency: 'monthly', priority: 1 },
     { path: '/sobre', lastModified: lastModified.sobre, changeFrequency: 'monthly', priority: 0.8 },
     { path: '/areas-de-atuacao', lastModified: lastModified.areas, changeFrequency: 'monthly', priority: 0.9 },
+    { path: '/advocacia-internacional', lastModified: lastModified.internacional, changeFrequency: 'monthly', priority: 0.9 },
     ...getDictionary('pt').practiceAreas.map((area) => ({
       path: `/areas-de-atuacao/${area.slug}`,
       lastModified: lastModified.areas,

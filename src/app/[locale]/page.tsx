@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { JsonLd } from '@/components/JsonLd'
 import { localePath, type Locale } from '@/i18n/config'
-import { getDictionary } from '@/i18n'
+import { frontOrder, getDictionary } from '@/i18n'
 import { pageMetadata, siteConfig } from '@/lib/site'
 
 type Props = { params: Promise<{ locale: Locale }> }
@@ -107,7 +107,7 @@ export default async function HomePage({ params }: Props) {
                 {t.ctaPrimary}
               </Link>
               <Link
-                href={href('/areas-de-atuacao')}
+                href={href('/advocacia-internacional')}
                 className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/60 md:py-3"
               >
                 {t.ctaSecondary}
@@ -146,7 +146,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Practice areas */}
+      {/* Practice areas, grouped by the two fronts */}
       <section className="relative z-10 overflow-hidden bg-ink-950 py-20 text-white md:py-28">
         <p
           aria-hidden="true"
@@ -161,24 +161,47 @@ export default async function HomePage({ params }: Props) {
             <h2 className="max-w-xl font-serif text-3xl leading-snug md:text-4xl">{t.areas.title}</h2>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-sm bg-white/10 sm:grid-cols-2">
-            {dict.practiceAreas.map((area, i) => (
-              <Link
-                key={area.slug}
-                href={href(`/areas-de-atuacao/${area.slug}`)}
-                className={`reveal stagger-${(i % 4) + 1} group relative flex min-h-[220px] flex-col justify-between bg-ink-950 p-8 transition duration-300 hover:z-10 hover:-translate-y-1 hover:bg-ink-900 hover:shadow-card`}
-              >
-                <div className="flex items-center justify-between text-xs text-white/40">
-                  <span>{area.audience}</span>
-                  <span className="transition group-hover:text-gold-400">↗</span>
-                </div>
-                <div>
-                  <h3 className="max-w-xs font-serif text-xl">{area.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">{area.summary}</p>
-                </div>
-              </Link>
+          {/* One panel per front, each listing its areas — the international one
+              also links to its hub page. */}
+          <div className="mt-14 grid gap-px overflow-hidden rounded-sm bg-white/10 md:grid-cols-2">
+            {frontOrder.map((front, i) => (
+              <div key={front} className={`reveal stagger-${i + 1} flex flex-col bg-ink-950 p-8 md:p-10`}>
+                <p className="text-xs text-white/40">{dict.fronts[front].tagline}</p>
+                <h3 className="mt-3 font-serif text-2xl">{dict.fronts[front].name}</h3>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-white/60">{dict.fronts[front].description}</p>
+                <ul className="mt-8 divide-y divide-white/10 border-t border-white/10">
+                  {dict.practiceAreas
+                    .filter((area) => area.front === front)
+                    .map((area) => (
+                      <li key={area.slug}>
+                        <Link
+                          href={href(`/areas-de-atuacao/${area.slug}`)}
+                          className="group flex items-center justify-between gap-4 py-3.5 text-sm text-white/80 transition hover:text-gold-400"
+                        >
+                          {area.shortTitle}
+                          <span aria-hidden="true" className="text-white/30 transition group-hover:text-gold-400">↗</span>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+                {front === 'internacional' && (
+                  <Link
+                    href={href('/advocacia-internacional')}
+                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-gold-400 transition hover:text-gold-300"
+                  >
+                    {t.areas.frontCta} <span aria-hidden="true">↗</span>
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
+
+          <Link
+            href={href('/areas-de-atuacao')}
+            className="reveal mt-10 inline-flex items-center gap-2 text-sm font-semibold text-white/70 transition hover:text-gold-400"
+          >
+            {t.areas.all} <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 

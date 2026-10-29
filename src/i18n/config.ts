@@ -1,16 +1,14 @@
-export const locales = ['pt', 'en', 'es', 'fr', 'hi'] as const
+export const locales = ['pt', 'en'] as const
 export type Locale = (typeof locales)[number]
 
 // Portuguese is served at the unprefixed URLs (/, /sobre…) — the URLs that were
-// already indexed. Every other language lives under its own prefix (/en, /fr…).
+// already indexed. English lives under /en. Spanish, French and Hindi were dropped
+// (2026-10) — next.config.ts redirects their old URLs to the English pages.
 export const defaultLocale: Locale = 'pt'
 
 export const localeMeta: Record<Locale, { label: string; short: string; htmlLang: string; ogLocale: string }> = {
   pt: { label: 'Português', short: 'PT', htmlLang: 'pt-BR', ogLocale: 'pt_BR' },
-  en: { label: 'English', short: 'EN', htmlLang: 'en-US', ogLocale: 'en_US' },
-  es: { label: 'Español', short: 'ES', htmlLang: 'es', ogLocale: 'es_ES' },
-  fr: { label: 'Français', short: 'FR', htmlLang: 'fr', ogLocale: 'fr_FR' },
-  hi: { label: 'हिन्दी', short: 'HI', htmlLang: 'hi', ogLocale: 'hi_IN' },
+  en: { label: 'English', short: 'EN', htmlLang: 'en', ogLocale: 'en_US' },
 }
 
 export function isLocale(value: string): value is Locale {

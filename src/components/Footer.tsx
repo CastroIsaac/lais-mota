@@ -33,6 +33,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <ul className="space-y-1">
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/sobre')}>{nav.about}</Link></li>
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/areas-de-atuacao')}>{nav.areas}</Link></li>
+            <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/advocacia-internacional')}>{dict.fronts.internacional.name}</Link></li>
             <li><Link className="inline-block py-1 hover:text-gold-400" href={localePath(locale, '/contato')}>{nav.contact}</Link></li>
           </ul>
           {(siteConfig.instagramUrl || siteConfig.linkedinUrl) && (

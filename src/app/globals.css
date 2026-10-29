@@ -161,9 +161,3 @@ body.motion-ready .reveal.in-view {
     animation: none;
   }
 }
-
-/* Letter-spacing breaks Devanagari apart (the small uppercase kickers use wide
-   tracking). Hindi has no case either, so just reset the spacing. */
-html[lang='hi'] [class*='tracking-'] {
-  letter-spacing: normal;
-}

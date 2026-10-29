@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
-import { defaultLocale, localeMeta, localePath, locales, type Locale } from '@/i18n/config'
+import { localeMeta, localePath, locales, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n'
+
+const fallbackLocale: Locale = 'en'
 
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://laismotaadvocacia.com.br'
 
@@ -28,11 +30,13 @@ export function shareImage(locale: Locale) {
   return { url: '/images/og-image.jpg', width: 1200, height: 630, alt: getDictionary(locale).meta.shareImageAlt }
 }
 
-// hreflang map for one page across every language, plus x-default (Portuguese).
+// hreflang map for one page across every language, plus x-default. Brazilians
+// match pt-BR; x-default is for everyone else (foreign investors, companies),
+// who are better served by the English page than by the Portuguese one.
 export function languageAlternates(path: string) {
   return {
     ...Object.fromEntries(locales.map((l) => [localeMeta[l].htmlLang, absoluteUrl(localePath(l, path))])),
-    'x-default': absoluteUrl(localePath(defaultLocale, path)),
+    'x-default': absoluteUrl(localePath(fallbackLocale, path)),
   }
 }
 
@@ -50,10 +54,12 @@ export function pageMetadata(
 ): Metadata {
   const url = absoluteUrl(localePath(locale, path))
   const image = shareImage(locale)
-  // `standalone` titles already carry the name (home page) — skip the "| Laís Mota Advocacia" suffix.
-  const fullTitle = standalone ? title : `${title} | ${siteConfig.name}`
+  // `standalone` titles already carry the name (home page) — skip the suffix. Long
+  // keyword titles get the short "| Laís Mota" so Google doesn't cut them (~60 chars).
+  const suffixed = `${title} | ${siteConfig.name}`
+  const fullTitle = standalone ? title : suffixed.length <= 60 ? suffixed : `${title} | Laís Mota`
   return {
-    title: standalone ? { absolute: title } : title,
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: url, languages: languageAlternates(path) },
     openGraph: {
