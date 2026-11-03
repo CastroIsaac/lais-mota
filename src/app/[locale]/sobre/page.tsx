@@ -73,6 +73,35 @@ export default async function SobrePage({ params }: Props) {
         </div>
       </section>
 
+      {/* Como penso o Direito */}
+      <section className="border-t border-line px-5 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-content">
+          <div className="reveal grid gap-10 md:grid-cols-[170px_1fr] md:gap-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{t.values.kicker}</p>
+            <div>
+              <h2 className="max-w-2xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">{t.values.title}</h2>
+              <dl className="mt-10 grid gap-8 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                {t.values.items.map((item, i) => (
+                  <div key={item.title} className={`reveal stagger-${(i % 4) + 1}`}>
+                    <dt className="font-serif text-lg text-ink-950">{item.title}</dt>
+                    <dd className="mt-2 text-sm leading-relaxed text-ink-500">{item.body}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-10 text-base text-ink-700">
+                {t.values.method}{' '}
+                <Link
+                  href={`${localePath(locale, '/')}#metodo`}
+                  className="font-semibold text-gold-600 transition hover:text-gold-700"
+                >
+                  {t.values.methodLink} <span aria-hidden="true">→</span>
+                </Link>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Compromisso */}
       <section className="bg-gold-50 py-16 md:py-24">
         <div className="mx-auto max-w-content px-5 md:px-8">

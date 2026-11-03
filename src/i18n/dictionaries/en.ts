@@ -482,28 +482,28 @@ export const en: Dictionary = {
   home: {
     heroAlt: 'Laís Mota, lawyer in Brasília, Brazil',
     eyebrow: 'Lawyer in Brazil · Strategic and international practice',
-    title: 'Legal strategy for decisions that cannot go wrong.',
-    lead: 'A strategic practice for civil, business and property matters, and an international practice for companies, investors and transactions between Brazil and other countries.',
+    title: 'Understand the whole problem before choosing the path.',
+    lead: 'A strategic practice grounded in civil litigation and complex human matters, and an international practice connecting law, business and transactions between Brazil and other countries.',
     ctaPrimary: 'Book a meeting',
     ctaSecondary: 'International practice',
     scroll: 'Scroll to learn more',
     who: {
-      kicker: 'I · Who we serve',
-      title: 'A boutique practice for matters that call for careful analysis.',
-      body: 'Laís Mota Advocacia is a boutique law firm in Brasília, Brazil, offering personalized service and handling complex legal matters. The practice has two fronts: a strategic practice for civil, business, family and property matters and complex litigation; and an international and business practice that combines Brazilian legal analysis, an understanding of international commercial relationships and coordination with foreign partners.',
+      kicker: 'I · How I work',
+      title: 'Strategy, study, sensitivity and depth.',
+      body: 'Before the brief or the contract, I try to understand the problem as a whole: the people involved, what is at stake and the risks that have not surfaced yet. That is where I start building options, and the best solution is often not the most obvious legal route. I practice on two fronts: a strategic practice for civil, business, family and property matters, and an international and business practice for transactions between Brazil and other countries.',
     },
     pillars: [
       {
-        title: 'Legal strategy',
-        body: 'In-depth analysis of the problem, the risks and the possible paths before any decision is made.',
+        title: 'Understand before acting',
+        body: 'Studying the case, the documents and the people involved before any decision. No ready-made answers.',
       },
       {
-        title: 'International perspective',
-        body: 'Transactions that require Brazilian law, international commercial logic and coordination with lawyers and partners in other jurisdictions.',
+        title: 'Build options',
+        body: 'Risks and scenarios mapped out to find solutions that often go beyond the traditional legal route.',
       },
       {
-        title: 'Personal and digital service',
-        body: 'Direct contact with the lawyer, in person or by video call, with documents and follow-up handled digitally.',
+        title: 'Technological and hands-on',
+        body: 'Digital tools that keep the work moving, with direct contact with me from the first conversation to the end.',
       },
     ],
     areas: {
@@ -521,9 +521,9 @@ export const en: Dictionary = {
       cta: 'Book a meeting',
     },
     diff: {
-      kicker: 'III · What sets us apart',
-      title: 'Legal expertise with a business perspective.',
-      body: 'A background in Foreign Trade makes it possible to analyze transactions not only from a legal standpoint, but also in light of their commercial, contractual and international logic — going beyond litigating cases or drafting contracts to understand the client’s context and structure the solution best suited to their goals.',
+      kicker: 'III · International practice',
+      title: 'One logic behind every transaction.',
+      body: 'Commodities, contracts, investment, health regulation, pharmaceutical imports, immigration and corporate structuring may look like separate fields. What ties them together is the same work: understanding business, connecting people, analyzing different legal systems and structuring solutions. My background in Foreign Trade lets me read each transaction by its commercial logic, not only its legal one.',
     },
     moments: [
       {
@@ -547,30 +547,41 @@ export const en: Dictionary = {
     ],
     itamaraty: {
       imageAlt: 'Laís Mota at the Itamaraty Palace, headquarters of Brazil’s Ministry of Foreign Affairs, in Brasília',
-      kicker: 'What sets us apart',
+      kicker: 'International relations',
       title: 'From institutional settings to international dialogue.',
       body: 'A modern legal practice is also built by listening to different contexts — legal, business, cultural and global.',
     },
     process: {
-      kicker: 'IV · How it works',
-      title: 'From first contact to resolution.',
+      kicker: 'IV · Method',
+      title: 'MÉTODO LITIS™',
+      intro:
+        'My own methodology, which organizes every case and transaction into stages of analysis, strategy, review and follow-through. It is not a rigid protocol: it ensures that no decision is made before the problem has been fully understood.',
     },
     steps: [
-      { title: 'Initial conversation', body: 'Understanding your case or your company’s needs, with no obligation.' },
-      { title: 'Strategic analysis', body: 'Assessment of the applicable law, the documents, the risks and the possible outcomes.' },
       {
-        title: 'Defining the path',
-        body: 'Structuring the legal solution best suited to your goals — preventive, contractual or litigation.',
+        title: 'Analysis',
+        body: 'Careful listening, study of the documents and the people involved, and a reading of the whole problem, not just the legal question.',
       },
-      { title: 'Ongoing support', body: 'Hands-on work through to resolution, with constant communication at every stage.' },
+      {
+        title: 'Strategy',
+        body: 'Risks and scenarios mapped out and options built, in court or out of it, until the one best suited to your goals emerges.',
+      },
+      {
+        title: 'Review',
+        body: 'Every brief, contract or opinion goes through a critical review before it moves on: what could go wrong, and what is still missing.',
+      },
+      {
+        title: 'Follow-through',
+        body: 'Present at every stage until the end, with clear communication about what is happening and what comes next.',
+      },
     ],
     faq: {
       kicker: 'V · FAQ',
       title: 'Before booking, you may want to know.',
     },
     closing: {
-      kicker: 'New opportunities',
-      title: 'Shall we turn a legal question into a confident decision?',
+      kicker: 'First conversation',
+      title: 'Tell me the whole problem. Strategy starts there.',
       line: 'In-person and online meetings, by appointment.',
       cta: 'Talk to Laís Mota',
     },
@@ -582,20 +593,24 @@ export const en: Dictionary = {
     lead: 'Counsel to companies, investors, intermediaries and families on matters between Brazil and other countries — foreign trade, commodities, international contracts, health regulation, business immigration, foreign investment and international estates.',
     cta: 'Book a meeting',
     capabilities: {
-      kicker: 'I · How we work',
-      title: 'Three skill sets in a single transaction.',
+      kicker: 'I · The logic of the practice',
+      title: 'Different fields, one way of thinking.',
       items: [
         {
-          title: 'Brazilian legal analysis',
-          body: 'Reading the transaction under Brazilian law — contracts, regulation, corporate, immigration and documentary requirements.',
+          title: 'Understanding business',
+          body: 'A Foreign Trade background to read the deal by its commercial logic: intermediaries, Incoterms, guarantees, deadlines and performance risks.',
         },
         {
-          title: 'International commercial insight',
-          body: 'A Foreign Trade background to understand how the deal works: intermediaries, Incoterms, guarantees, deadlines and performance risks.',
+          title: 'Connecting people',
+          body: 'Working alongside lawyers and professionals in other countries, so each part of the deal is handled by someone who knows the local law.',
         },
         {
-          title: 'Coordination with foreign partners',
-          body: 'Working alongside lawyers and professionals in other jurisdictions, so each part of the deal is handled by someone who knows the local law.',
+          title: 'Analyzing legal systems',
+          body: 'Reading the transaction under Brazilian law and the rules of the other countries involved: contracts, regulation, and corporate, immigration and documentary requirements.',
+        },
+        {
+          title: 'Structuring solutions',
+          body: 'Instruments, guarantees, governing law and dispute resolution designed for the actual transaction, not copied from templates.',
         },
       ],
     },
@@ -656,8 +671,8 @@ export const en: Dictionary = {
     photoAlt: 'Laís Mota, lawyer',
     kicker: 'I · About',
     intro: [
-      'My professional path has been built on a combination of solid academic training, institutional experience and strategic legal practice — always paired with an interdisciplinary view of the law, especially in civil, business, contract and international relations matters.',
-      'I strive for a boutique, technical, strategic and personalized practice — understanding not only the legal question presented, but its financial, family, business and, where applicable, international implications.',
+      'I chose to build a legal practice that is neither rigid nor distant. I believe confidence comes from competence, not from an artificial image of authority.',
+      'My work rests on strategy, study, sensitivity and depth. I like to understand the problem as a whole, get to know the people involved and build options, even when the best solution lies outside the traditional legal route.',
     ],
     oabNote: 'Admitted to the Brazilian Bar Association (Ordem dos Advogados do Brasil).',
     credentials: [
@@ -678,11 +693,25 @@ export const en: Dictionary = {
       paragraphs: [
         'While still in law school, I sought experiences that would help me understand the law beyond litigation, taking part in academic and institutional projects related to human rights and international relations.',
         'I then worked as a legal advisor at the Court of Justice of the State of Pará (TJPA) — an experience that greatly deepened my understanding of how courts reach decisions and helped me develop a technical and strategic view of litigation.',
-        'In Brasília, I established my private practice. Today it has two fronts: a strategic practice for civil, business, family and property matters and complex litigation; and an international and business practice covering foreign trade and commodities, international contracts, health regulation, business immigration, foreign investment and estates with international elements.',
+        'In Brasília, I established my private practice. It is increasingly multidisciplinary, connecting law, business, technology and international relations, while keeping its grounding in civil litigation and complex human matters.',
+        'The international practice is not just another area of the firm. I have been building it with dedication, in foreign trade and commodity transactions, contracts, investment, health regulation, pharmaceutical imports, immigration and corporate structuring, working with professionals in different countries.',
       ],
     },
+    values: {
+      kicker: 'III · How I think about law',
+      title: 'Sophisticated, yet approachable. International, with an identity of its own.',
+      items: [
+        { title: 'Intellectual rigor', body: 'Constant study as the foundation of any strategy.' },
+        { title: 'Communication', body: 'Explaining clearly what is happening and why, without unnecessary legalese.' },
+        { title: 'Elegance', body: 'In how a case is handled, written and negotiated.' },
+        { title: 'Discretion', body: 'Confidentiality and care with the information and the people involved in every case.' },
+        { title: 'Human relationships', body: 'Behind every case or transaction there are people, and that is where the work begins.' },
+      ],
+      method: 'This way of working is organized in the MÉTODO LITIS™.',
+      methodLink: 'Explore the method',
+    },
     commitment: {
-      kicker: 'III · Commitment',
+      kicker: 'IV · Commitment',
       body: 'During my studies, I took part in activities related to migration policy and refugee protection, in a project at the Federal University of Paraná (UFPR), in Curitiba — an experience that shaped my grounding in human rights and a legal perspective attentive to international, migration and social issues. The defense of human rights and human dignity remains one of the values that guide my understanding of the law.',
       note: 'I have approximately three years of legal practice, with experience in more than 50 cases, advisory engagements and legal projects involving civil, business, contractual and international matters.',
     },

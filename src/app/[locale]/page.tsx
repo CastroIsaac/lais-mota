@@ -121,7 +121,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Quem atende + os três pilares — relative z-10 + opaque bg so this slides up and
+      {/* Como trabalho + os três pilares — relative z-10 + opaque bg so this slides up and
           covers the sticky hero above like a layer, instead of the hero just scrolling
           off normally. */}
       <section className="relative z-10 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
@@ -347,14 +347,18 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Process — z-20 so it slides up and covers the sticky Itamaraty section above it. */}
-      <section className="relative z-20 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
+      {/* MÉTODO LITIS™ — z-20 so it slides up and covers the sticky Itamaraty section above it.
+          id="metodo" is linked from the about page. */}
+      <section id="metodo" className="relative z-20 scroll-mt-20 bg-[var(--bg)] px-5 py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-content">
           <div className="reveal grid gap-6 md:grid-cols-[170px_1fr] md:gap-16">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{t.process.kicker}</p>
-            <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
-              {t.process.title}
-            </h2>
+            <div>
+              <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">
+                {t.process.title}
+              </h2>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-700">{t.process.intro}</p>
+            </div>
           </div>
 
           <ol className="mt-14 grid gap-8 border-t border-line pt-10 sm:grid-cols-2 lg:grid-cols-4">

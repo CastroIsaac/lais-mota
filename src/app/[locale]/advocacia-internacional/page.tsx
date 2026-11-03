@@ -109,7 +109,7 @@ export default async function AdvocaciaInternacionalPage({ params }: Props) {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">{t.capabilities.kicker}</p>
             <h2 className="max-w-xl font-serif text-3xl leading-snug text-ink-950 md:text-4xl">{t.capabilities.title}</h2>
           </div>
-          <ul className="mt-14 grid gap-8 border-t border-line pt-12 sm:grid-cols-3">
+          <ul className="mt-14 grid gap-8 border-t border-line pt-12 sm:grid-cols-2 lg:grid-cols-4">
             {t.capabilities.items.map((item, i) => (
               <li key={item.title} className={`reveal stagger-${i + 1}`}>
                 <span className="font-serif text-3xl text-gold-600">{pad(i)}</span>

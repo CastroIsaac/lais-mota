@@ -592,28 +592,28 @@ export const pt = {
     heroAlt: 'Laís Mota, advogada em Brasília-DF',
     // Rendered inside the h1 (carries the search term "Advogada em Brasília").
     eyebrow: 'Advogada em Brasília · Atuação nacional e internacional',
-    title: 'Estratégia jurídica para decisões que não podem dar errado.',
-    lead: 'Advocacia estratégica em demandas cíveis, empresariais e patrimoniais, e advocacia internacional para empresas, investidores e operações entre o Brasil e outros países.',
+    title: 'Compreender o problema inteiro antes de escolher o caminho.',
+    lead: 'Advocacia estratégica com base no contencioso cível e nas demandas humanas complexas, e uma frente internacional que conecta Direito, negócios e operações entre o Brasil e outros países.',
     ctaPrimary: 'Agendar uma conversa',
     ctaSecondary: 'Advocacia internacional',
     scroll: 'Role para saber mais',
     who: {
-      kicker: 'I · Quem atende',
-      title: 'Advocacia boutique para operações que exigem análise cuidadosa.',
-      body: 'Laís Mota Advocacia é um escritório boutique em Brasília, com atendimento personalizado e atuação em operações jurídicas complexas. A atuação reúne duas frentes: a advocacia estratégica, voltada a demandas cíveis, empresariais, familiares, patrimoniais e ao contencioso complexo; e a advocacia internacional e empresarial, que combina a análise jurídica brasileira, a compreensão das relações comerciais internacionais e a coordenação com parceiros estrangeiros.',
+      kicker: 'I · Como trabalho',
+      title: 'Estratégia, estudo, sensibilidade e profundidade.',
+      body: 'Antes da petição ou do contrato, procuro entender o problema como um todo: as pessoas envolvidas, o que está em jogo e os riscos que ainda não apareceram. É a partir daí que construo possibilidades, e muitas vezes a melhor solução não é a do caminho jurídico mais óbvio. Atuo em duas frentes: a advocacia estratégica, em demandas cíveis, empresariais, familiares e patrimoniais, e a advocacia internacional e empresarial, em operações entre o Brasil e outros países.',
     },
     pillars: [
       {
-        title: 'Estratégia jurídica',
-        body: 'Análise aprofundada do problema, dos riscos e dos possíveis caminhos antes da tomada de decisão.',
+        title: 'Entender antes de agir',
+        body: 'Estudo do caso, dos documentos e das pessoas envolvidas antes de qualquer decisão. Sem respostas prontas.',
       },
       {
-        title: 'Visão internacional',
-        body: 'Operações que exigem Direito brasileiro, lógica comercial internacional e coordenação com advogados e parceiros de outras jurisdições.',
+        title: 'Construir possibilidades',
+        body: 'Riscos e cenários mapeados para encontrar saídas que, muitas vezes, vão além do caminho jurídico tradicional.',
       },
       {
-        title: 'Atendimento personalizado e digital',
-        body: 'Contato direto com a advogada, presencial ou por videoconferência, com documentos e acompanhamento em formato digital.',
+        title: 'Tecnológica e artesanal',
+        body: 'Ferramentas digitais para dar agilidade ao trabalho, com atendimento direto comigo do primeiro contato à conclusão.',
       },
     ],
     areas: {
@@ -631,9 +631,9 @@ export const pt = {
       cta: 'Agendar uma conversa',
     },
     diff: {
-      kicker: 'III · Diferenciais',
-      title: 'Conhecimento jurídico com visão de negócio.',
-      body: 'Formação em Comércio Exterior permite analisar operações não apenas sob o aspecto jurídico, mas também considerando sua lógica comercial, contratual e internacional — indo além de atuar em processos ou elaborar contratos, para compreender o contexto do cliente e estruturar a solução mais adequada aos seus objetivos.',
+      kicker: 'III · Atuação internacional',
+      title: 'Uma lógica por trás de cada operação.',
+      body: 'Commodities, contratos, investimentos, regulação sanitária, importação de farmacêuticos, imigração e estruturação empresarial podem parecer áreas distintas. O que as une é o mesmo trabalho: compreender negócios, conectar pessoas, analisar diferentes sistemas jurídicos e estruturar soluções. A formação em Comércio Exterior me permite ler cada operação também pela sua lógica comercial, e não apenas pela jurídica.',
     },
     moments: [
       {
@@ -657,30 +657,43 @@ export const pt = {
     ],
     itamaraty: {
       imageAlt: 'Laís Mota no Palácio do Itamaraty, sede do Ministério das Relações Exteriores, em Brasília',
-      kicker: 'Diferenciais',
+      kicker: 'Relações internacionais',
       title: 'Do ambiente institucional ao diálogo internacional.',
       body: 'Uma atuação contemporânea também se constrói pela escuta de diferentes contextos — jurídicos, empresariais, culturais e globais.',
     },
+    // The MÉTODO LITIS™ (Laís's own methodology). Stage names come from her; the
+    // stage descriptions are a first draft for her to confirm.
     process: {
-      kicker: 'IV · Como funciona',
-      title: 'Do primeiro contato à resolução.',
+      kicker: 'IV · Método',
+      title: 'MÉTODO LITIS™',
+      intro:
+        'Uma metodologia própria, que organiza cada caso e cada operação em etapas de análise, estratégia, revisão e acompanhamento. Não é um protocolo engessado: é a garantia de que nenhuma decisão seja tomada antes de o problema ser compreendido por inteiro.',
     },
     steps: [
-      { title: 'Conversa inicial', body: 'Entendimento do seu caso ou da necessidade da sua empresa, sem compromisso.' },
-      { title: 'Análise estratégica', body: 'Avaliação da legislação, dos documentos, dos riscos e dos possíveis cenários decisórios.' },
       {
-        title: 'Definição do caminho',
-        body: 'Estruturação da solução jurídica mais adequada aos seus objetivos — preventiva, contratual ou contenciosa.',
+        title: 'Análise',
+        body: 'Escuta atenta, estudo dos documentos e das pessoas envolvidas, e leitura do problema por inteiro, não só da questão jurídica.',
       },
-      { title: 'Acompanhamento', body: 'Atuação direta até a resolução, com comunicação constante sobre cada etapa.' },
+      {
+        title: 'Estratégia',
+        body: 'Riscos e cenários mapeados e alternativas construídas, judiciais ou não, até chegar à mais adequada aos seus objetivos.',
+      },
+      {
+        title: 'Revisão',
+        body: 'Cada peça, contrato ou parecer passa por uma revisão crítica antes de seguir: o que pode dar errado e o que ainda falta considerar.',
+      },
+      {
+        title: 'Acompanhamento',
+        body: 'Presença em cada etapa até a conclusão, com comunicação clara sobre o que está acontecendo e o que vem a seguir.',
+      },
     ],
     faq: {
       kicker: 'V · Perguntas frequentes',
       title: 'Antes de agendar, você pode querer saber.',
     },
     closing: {
-      kicker: 'Novas oportunidades',
-      title: 'Vamos transformar uma questão jurídica em decisão segura?',
+      kicker: 'Conversa inicial',
+      title: 'Conte o problema inteiro. A estratégia começa daí.',
       line: 'Atendimento presencial e online, com hora marcada.',
       cta: 'Falar com Laís Mota',
     },
@@ -692,20 +705,24 @@ export const pt = {
     lead: 'Assessoria a empresas, investidores, intermediários e famílias em operações entre o Brasil e outros países — comércio exterior, commodities, contratos internacionais, regulação sanitária, imigração empresarial, investimento estrangeiro e sucessões internacionais.',
     cta: 'Agendar uma conversa',
     capabilities: {
-      kicker: 'I · Como atuamos',
-      title: 'Três competências em uma mesma operação.',
+      kicker: 'I · A lógica da atuação',
+      title: 'Áreas diferentes, uma mesma forma de pensar.',
       items: [
         {
-          title: 'Análise jurídica brasileira',
-          body: 'Leitura da operação à luz do Direito brasileiro — contratos, regulação, exigências societárias, migratórias e documentais.',
+          title: 'Compreender negócios',
+          body: 'Formação em Comércio Exterior para ler a operação pela sua lógica comercial: intermediários, Incoterms, garantias, prazos e riscos de execução.',
         },
         {
-          title: 'Visão comercial internacional',
-          body: 'Formação em Comércio Exterior para compreender a lógica da operação: intermediários, Incoterms, garantias, prazos e riscos de execução.',
+          title: 'Conectar pessoas',
+          body: 'Articulação com advogados e profissionais de outros países, para que cada parte da operação fique com quem conhece a lei local.',
         },
         {
-          title: 'Coordenação com parceiros estrangeiros',
-          body: 'Articulação com advogados e profissionais de outras jurisdições, para que cada parte da operação seja tratada por quem conhece a lei local.',
+          title: 'Analisar sistemas jurídicos',
+          body: 'Leitura da operação à luz do Direito brasileiro e das regras dos outros países envolvidos: contratos, regulação e exigências societárias, migratórias e documentais.',
+        },
+        {
+          title: 'Estruturar soluções',
+          body: 'Instrumentos, garantias, lei aplicável e solução de controvérsias desenhados para a operação concreta, e não a partir de modelos prontos.',
         },
       ],
     },
@@ -766,8 +783,8 @@ export const pt = {
     photoAlt: 'Laís Mota, advogada',
     kicker: 'I · Sobre',
     intro: [
-      'Minha trajetória profissional foi construída a partir da combinação entre formação acadêmica sólida, experiência institucional e atuação estratégica na advocacia — sempre associada a uma visão interdisciplinar do Direito, especialmente nas áreas civil, empresarial, contratual e de relações internacionais.',
-      'Busco desenvolver uma advocacia boutique, técnica, estratégica e personalizada — compreendendo não apenas a questão jurídica apresentada, mas os seus impactos patrimoniais, familiares, empresariais e, quando aplicável, internacionais.',
+      'Escolhi construir uma advocacia que não fosse engessada nem distante. Acredito que segurança se transmite pela competência, e não por uma imagem artificial de autoridade.',
+      'Meu trabalho parte de estratégia, estudo, sensibilidade e profundidade. Gosto de compreender o problema como um todo, conhecer as pessoas envolvidas e construir possibilidades, inclusive quando a melhor solução está fora do caminho jurídico tradicional.',
     ],
     oabNote: 'Registro profissional junto à Ordem dos Advogados do Brasil.',
     credentials: [
@@ -788,11 +805,25 @@ export const pt = {
       paragraphs: [
         'Ainda durante a graduação, busquei experiências que me permitissem compreender o Direito para além do processo judicial, participando de projetos acadêmicos e institucionais relacionados a direitos humanos e relações internacionais.',
         'Posteriormente, atuei em assessoria no Tribunal de Justiça do Estado do Pará (TJPA) — experiência que contribuiu significativamente para a compreensão da dinâmica decisória do Poder Judiciário e para o desenvolvimento de uma visão técnica e estratégica do processo.',
-        'Em Brasília, consolidei minha atuação na advocacia privada. Hoje, ela reúne duas frentes: a advocacia estratégica, em demandas cíveis, empresariais, familiares, patrimoniais e contencioso complexo; e a advocacia internacional e empresarial, com operações de comércio exterior e commodities, contratos internacionais, regulação sanitária, imigração empresarial, investimentos estrangeiros e sucessões com elementos internacionais.',
+        'Em Brasília, consolidei minha atuação na advocacia privada. Ela é cada vez mais multidisciplinar e conecta Direito, negócios, tecnologia e relações internacionais, sem abandonar a base no contencioso cível e nas demandas humanas complexas.',
+        'A frente internacional não é uma área a mais do escritório. Venho construindo-a com dedicação, em operações de comércio exterior e commodities, contratos, investimentos, regulação sanitária, importação de produtos farmacêuticos, imigração e estruturação empresarial, em articulação com profissionais de diferentes países.',
       ],
     },
+    values: {
+      kicker: 'III · Como penso o Direito',
+      title: 'Sofisticada, mas acessível. Internacional, com identidade própria.',
+      items: [
+        { title: 'Formação intelectual', body: 'Estudo constante como base de qualquer estratégia.' },
+        { title: 'Comunicação', body: 'Explicar com clareza o que está acontecendo e por quê, sem juridiquês desnecessário.' },
+        { title: 'Elegância', body: 'Na forma de conduzir um caso, de escrever e de negociar.' },
+        { title: 'Discrição', body: 'Sigilo e cuidado com as informações e com as pessoas envolvidas em cada caso.' },
+        { title: 'Relações humanas', body: 'Por trás de cada processo ou operação existem pessoas, e é com elas que o trabalho começa.' },
+      ],
+      method: 'Essa forma de trabalhar está organizada no MÉTODO LITIS™.',
+      methodLink: 'Conhecer o método',
+    },
     commitment: {
-      kicker: 'III · Compromisso',
+      kicker: 'IV · Compromisso',
       body: 'Durante a graduação, participei de atividades relacionadas à política migratória e à proteção de refugiados, em projeto desenvolvido na Universidade Federal do Paraná (UFPR), em Curitiba — uma experiência que contribuiu para minha formação em direitos humanos e para uma visão jurídica sensível às questões internacionais, migratórias e sociais. A defesa dos direitos humanos e da dignidade da pessoa permanece como um dos valores que orientam minha compreensão do Direito.',
       note: 'Possuo aproximadamente três anos de atuação na advocacia, com experiência em mais de 50 demandas, consultorias e projetos jurídicos envolvendo questões civis, empresariais, contratuais e internacionais.',
     },
