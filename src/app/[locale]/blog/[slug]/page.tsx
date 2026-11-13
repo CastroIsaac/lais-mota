@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <Link
         href={href('/contato')}
-        className="mt-8 inline-flex items-center justify-center rounded-full bg-ink-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold-600"
+        className="mt-8 inline-flex items-center justify-center rounded bg-ink-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold-600"
       >
         {blogCopy.cta}
       </Link>

@@ -61,7 +61,7 @@ export function ContactForm({ t }: { t: Dictionary['form'] }) {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-2 inline-flex items-center justify-between rounded-full bg-gold-500 px-6 py-3.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 disabled:opacity-60"
+        className="mt-2 inline-flex items-center justify-between rounded bg-gold-500 px-6 py-3.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 disabled:opacity-60"
       >
         {t.submit} <span aria-hidden="true">↗</span>
       </button>

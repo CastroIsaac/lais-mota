@@ -117,7 +117,7 @@ export default async function PracticeAreaPage({ params }: Props) {
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {area.services.map((service) => (
               <li key={service} className="flex items-start gap-3 text-sm leading-relaxed text-ink-700">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden="true" />
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded bg-gold-500" aria-hidden="true" />
                 {service}
               </li>
             ))}
@@ -160,7 +160,7 @@ export default async function PracticeAreaPage({ params }: Props) {
 
         <Link
           href={href('/contato')}
-          className="mt-12 inline-flex items-center justify-center rounded-full bg-ink-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold-600"
+          className="mt-12 inline-flex items-center justify-center rounded bg-ink-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold-600"
         >
           {t.cta}
         </Link>

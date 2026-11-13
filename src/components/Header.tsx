@@ -76,7 +76,7 @@ export function Header({ locale, nav, blogLabel }: { locale: Locale; nav: Dictio
         <div className="hidden shrink-0 items-center gap-3 lg:flex">
           <LanguageSwitcher locale={locale} label={nav.language} />
           <Link
-            className="inline-flex items-center rounded-full bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-600"
+            className="inline-flex items-center rounded bg-ink-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gold-600"
             href={localePath(locale, '/contato')}
           >
             {nav.cta}
@@ -132,7 +132,7 @@ export function Header({ locale, nav, blogLabel }: { locale: Locale; nav: Dictio
             </Link>
           ))}
           <Link
-            className="mt-2 inline-flex items-center justify-center rounded-full bg-ink-950 px-5 py-3 text-sm font-semibold text-white"
+            className="mt-2 inline-flex items-center justify-center rounded bg-ink-950 px-5 py-3 text-sm font-semibold text-white"
             href={localePath(locale, '/contato')}
             tabIndex={isMenuOpen ? 0 : -1}
             onClick={() => setIsMenuOpen(false)}

@@ -106,13 +106,13 @@ export default async function HomePage({ params }: Props) {
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row md:mt-8 md:gap-3">
               <Link
                 href={href('/contato')}
-                className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 md:py-3"
+                className="inline-flex items-center justify-center rounded bg-gold-500 px-6 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-gold-600 md:py-3"
               >
                 {t.ctaPrimary}
               </Link>
               <Link
                 href={href('/advocacia-internacional')}
-                className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/60 md:py-3"
+                className="inline-flex items-center justify-center rounded border border-white/30 px-6 py-2.5 text-sm font-semibold text-white transition hover:border-white/60 md:py-3"
               >
                 {t.ctaSecondary}
               </Link>
@@ -267,7 +267,7 @@ export default async function HomePage({ params }: Props) {
           <p className="mt-5 max-w-md text-base leading-relaxed text-white/70">
             {t.brasilia.body}
           </p>
-          <Link href={href('/contato')} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-400 transition hover:text-gold-300">
+          <Link href={href('/contato')} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-400 underline-offset-4 transition hover:underline hover:text-gold-300">
             {t.brasilia.cta} <span aria-hidden="true">↗</span>
           </Link>
         </div>
@@ -399,13 +399,6 @@ export default async function HomePage({ params }: Props) {
 
       {/* Closing statement / CTA */}
       <section className="relative z-10 overflow-hidden bg-ink-950 py-24 text-white md:py-32">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background: 'radial-gradient(circle at 15% 20%, rgba(180,143,76,0.22), transparent 45%)',
-          }}
-        />
         <div className="reveal relative mx-auto max-w-content px-5 text-center md:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">{t.closing.kicker}</p>
           <h2 className="mx-auto mt-6 max-w-2xl font-serif text-3xl leading-tight md:text-5xl">
@@ -414,10 +407,12 @@ export default async function HomePage({ params }: Props) {
           <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-white/60">
             {siteConfig.oabNumber} · {t.closing.line}
           </p>
+          {/* Outlined CTA with border beam — the beam sweeps around the border in gold. */}
           <Link
             href={href('/contato')}
-            className="mt-9 inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-4 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
+            className="relative mt-9 inline-flex items-center justify-center overflow-hidden rounded border border-gold-500/40 px-8 py-4 text-sm font-semibold text-gold-400 transition hover:border-gold-400 hover:text-gold-300"
           >
+            <span className="border-beam" aria-hidden="true" />
             {t.closing.cta}
           </Link>
         </div>

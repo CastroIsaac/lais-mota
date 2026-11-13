@@ -84,7 +84,7 @@ export default async function AdvocaciaInternacionalPage({ params }: Props) {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">{t.lead}</p>
           <Link
             href={href('/contato')}
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
+            className="mt-8 inline-flex items-center justify-center rounded bg-gold-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
           >
             {t.cta}
           </Link>
@@ -210,7 +210,7 @@ export default async function AdvocaciaInternacionalPage({ params }: Props) {
           </p>
           <Link
             href={href('/contato')}
-            className="mt-9 inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-4 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
+            className="mt-9 inline-flex items-center justify-center rounded bg-gold-500 px-8 py-4 text-sm font-semibold text-ink-950 transition hover:bg-gold-600"
           >
             {t.closing.cta}
           </Link>

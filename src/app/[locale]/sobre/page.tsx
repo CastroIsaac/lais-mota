@@ -54,7 +54,7 @@ export default async function SobrePage({ params }: Props) {
 
           <Link
             href={localePath(locale, '/contato')}
-            className="mt-10 inline-flex items-center justify-center rounded-full bg-ink-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold-600"
+            className="mt-10 inline-flex items-center justify-center rounded bg-ink-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gold-600"
           >
             {t.cta}
           </Link>
