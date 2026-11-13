@@ -5,7 +5,8 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 import { ScrollReveal } from '@/components/ScrollReveal'
-import { Analytics } from '@/components/Analytics'
+import { CookieBanner } from '@/components/CookieBanner'
+import { StickyMobileCta } from '@/components/StickyMobileCta'
 import { JsonLd } from '@/components/JsonLd'
 import { blogCopy, hasBlog } from '@/content/blog'
 import { defaultLocale, isLocale, localeMeta, localePath, locales, type Locale } from '@/i18n/config'
@@ -169,10 +170,11 @@ export default async function LocaleLayout({ children, params }: Props) {
         <JsonLd data={jsonLd} />
         <ScrollReveal />
         <Header locale={locale} nav={dict.nav} blogLabel={showBlog ? blogCopy.label : undefined} />
-        <main>{children}</main>
+        <main className="pb-16 lg:pb-0">{children}</main>
         <Footer locale={locale} dict={dict} blogLabel={showBlog ? blogCopy.label : undefined} />
         <WhatsAppFloat label={dict.whatsappLabel} greeting={dict.whatsappGreeting} />
-        <Analytics />
+        <StickyMobileCta locale={locale} label={dict.stickyCta} />
+        <CookieBanner locale={locale} t={dict.cookie} />
       </body>
     </html>
   )

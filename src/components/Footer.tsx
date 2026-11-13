@@ -48,9 +48,15 @@ export function Footer({ locale, dict, blogLabel }: { locale: Locale; dict: Dict
       </div>
 
       <div className="border-t border-white/10 px-5 py-5 md:px-8">
-        <p className="mx-auto max-w-content text-xs text-white/60">
-          {siteConfig.oabNumber} · © {new Date().getFullYear()} {siteConfig.attorneyName}. {footer.rights}
-        </p>
+        <div className="mx-auto flex max-w-content flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-white/60">
+            {siteConfig.oabNumber} · © {new Date().getFullYear()} {siteConfig.attorneyName}. {footer.rights}
+          </p>
+          <div className="flex gap-4 text-xs text-white/50">
+            <Link className="hover:text-white/80 transition" href={localePath(locale, '/privacidade')}>{footer.privacy}</Link>
+            <Link className="hover:text-white/80 transition" href={localePath(locale, '/termos')}>{footer.terms}</Link>
+          </div>
+        </div>
       </div>
     </footer>
   )

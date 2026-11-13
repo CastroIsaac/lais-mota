@@ -436,6 +436,14 @@ export const en: Dictionary = {
       description:
         'Schedule a meeting with Laís Mota, by video call or in person in Brasília, Brazil, to discuss your case or your company’s legal needs.',
     },
+    privacy: {
+      title: 'Privacy Policy',
+      description: 'Learn how Lais Mota Advocacia collects, uses and protects your personal data, in accordance with Brazilian data protection law (LGPD).',
+    },
+    terms: {
+      title: 'Terms of Use',
+      description: 'Terms of use for the Lais Mota Advocacia website.',
+    },
     shareImageAlt: 'Laís Mota Advocacia — strategic and international legal practice in Brasília, Brazil',
     keywords: [
       'lawyer in Brazil',
@@ -753,6 +761,12 @@ export const en: Dictionary = {
     submit: 'Send via WhatsApp',
     note: 'When you submit, your message will open in WhatsApp for you to review and send.',
     whatsappTemplate: 'Hello, my name is {name}.\nSubject: {subject}\n\n{message}',
+    errors: {
+      name: 'Please enter your name.',
+      subject: 'Please enter a subject.',
+      message: 'Please describe your case briefly.',
+    },
+    success: 'WhatsApp opened! Review your message and tap Send.',
   },
 
   footer: {
@@ -761,6 +775,18 @@ export const en: Dictionary = {
     nav: 'Navigation',
     navLabel: 'Footer navigation',
     rights: 'All rights reserved.',
+    legal: 'Legal',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Use',
+  },
+
+  stickyCta: 'Book a meeting',
+
+  cookie: {
+    message: 'We use cookies to analyse traffic and improve your experience. By accepting, you consent to our',
+    privacyLink: 'Privacy Policy',
+    accept: 'Accept',
+    decline: 'Decline',
   },
 
   whatsappLabel: 'Chat on WhatsApp',

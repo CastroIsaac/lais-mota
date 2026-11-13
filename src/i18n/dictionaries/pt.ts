@@ -461,6 +461,15 @@ export const pt = {
       description:
         'Agende uma consulta com Laís Mota, advogada na Asa Norte, Brasília-DF. Atendimento presencial ou online por videoconferência, com hora marcada.',
     },
+    privacy: {
+      title: 'Política de Privacidade',
+      description:
+        'Saiba como o escritório Laís Mota Advocacia coleta, usa e protege seus dados pessoais, em conformidade com a LGPD.',
+    },
+    terms: {
+      title: 'Termos de Uso',
+      description: 'Termos de uso do site Laís Mota Advocacia.',
+    },
     shareImageAlt: 'Laís Mota Advocacia — advocacia estratégica e internacional em Brasília-DF',
     keywords: [
       // Marca
@@ -866,6 +875,12 @@ export const pt = {
     note: 'Ao enviar, sua mensagem será aberta no WhatsApp para confirmação e envio.',
     // {name}, {subject} and {message} are filled in from the form.
     whatsappTemplate: 'Olá, meu nome é {name}.\nAssunto: {subject}\n\n{message}',
+    errors: {
+      name: 'Por favor, informe seu nome.',
+      subject: 'Por favor, informe o assunto.',
+      message: 'Por favor, descreva brevemente o seu caso.',
+    },
+    success: 'WhatsApp aberto! Revise sua mensagem e toque em Enviar.',
   },
 
   footer: {
@@ -874,6 +889,18 @@ export const pt = {
     nav: 'Navegação',
     navLabel: 'Navegação do rodapé',
     rights: 'Todos os direitos reservados.',
+    legal: 'Legal',
+    privacy: 'Política de Privacidade',
+    terms: 'Termos de Uso',
+  },
+
+  stickyCta: 'Agendar uma conversa',
+
+  cookie: {
+    message: 'Usamos cookies para analisar o tráfego e melhorar sua experiência. Ao aceitar, você consente com nossa',
+    privacyLink: 'Política de Privacidade',
+    accept: 'Aceitar',
+    decline: 'Recusar',
   },
 
   whatsappLabel: 'Falar pelo WhatsApp',
