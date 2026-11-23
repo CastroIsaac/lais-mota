@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
+import Image, { getImageProps } from 'next/image'
 import Link from 'next/link'
 import { JsonLd } from '@/components/JsonLd'
 import { localePath, type Locale } from '@/i18n/config'
@@ -32,6 +32,10 @@ export default async function HomePage({ params }: Props) {
     })),
   }
 
+  const heroCommon = { alt: '', fill: true, priority: true, quality: 85, sizes: '100vw' } as const
+  const { props: heroDesktop } = getImageProps({ ...heroCommon, src: '/images/stf-hero.jpg' })
+  const { props: heroMobile } = getImageProps({ ...heroCommon, src: '/images/stf-hero-mobile.jpg' })
+
   return (
     <>
       <JsonLd data={faqJsonLd} />
@@ -43,18 +47,17 @@ export default async function HomePage({ params }: Props) {
       <section data-header-hero className="sticky top-0 z-0 min-h-[100svh]">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
-            {/* STF (Supremo Tribunal Federal) with the Justice statue on the left. Mobile
-                crops toward the statue; desktop keeps the statue left and the building under
-                the right-hand scrim where the headline sits. */}
-            <Image
-              src="/images/stf-hero.jpg"
-              alt={t.heroAlt}
-              fill
-              priority
-              quality={85}
-              sizes="100vw"
-              className="object-cover object-[11%_center] md:object-center"
-            />
+            {/* STF (Supremo Tribunal Federal) with the Justice statue: a vertical photo for
+                phones, a horizontal one from md up (statue left, headline over the building on
+                the right). <picture> art direction, so each device downloads only its own photo. */}
+            <picture>
+              <source media="(min-width: 768px)" srcSet={heroDesktop.srcSet} sizes="100vw" />
+              <img
+                {...heroMobile}
+                alt={t.heroAlt}
+                className="object-cover object-[22%_center] md:object-center"
+              />
+            </picture>
           </div>
           <div
             className="absolute inset-0 md:hidden"
