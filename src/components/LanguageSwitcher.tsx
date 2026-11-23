@@ -61,10 +61,13 @@ export function LanguageSwitcher({
   locale,
   label,
   align = 'right',
+  tone = 'dark',
 }: {
   locale: Locale
   label: string
   align?: 'left' | 'right'
+  /** 'light' = cream text for when the header sits transparent over a photo. */
+  tone?: 'dark' | 'light'
 }) {
   const pathname = usePathname()
   const basePath = stripLocale(pathname)
@@ -121,7 +124,11 @@ export function LanguageSwitcher({
         aria-expanded={open}
         aria-haspopup="true"
         aria-label={`${localeMeta[locale].short} · ${label}: ${localeMeta[locale].label}`}
-        className="flex items-center gap-1.5 rounded-full border border-ink-950/15 py-1.5 pl-1.5 pr-2.5 text-xs font-semibold text-ink-700 transition hover:border-gold-500 hover:text-ink-950"
+        className={`flex items-center gap-1.5 rounded-full border py-1.5 pl-1.5 pr-2.5 text-xs font-semibold transition hover:border-gold-500 ${
+          tone === 'light'
+            ? 'border-white/35 text-white/90 hover:text-white'
+            : 'border-ink-950/15 text-ink-700 hover:text-ink-950'
+        }`}
       >
         <Flag locale={locale} />
         {localeMeta[locale].short}

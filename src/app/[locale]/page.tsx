@@ -40,7 +40,7 @@ export default async function HomePage({ params }: Props) {
           desktop, since the text sits over the photo the same way at both sizes now.
           `sticky` pins it while the next section scrolls up over it (see that section's
           `relative z-10` + opaque background) instead of just scrolling away normally. */}
-      <section className="sticky top-0 z-0 min-h-[100svh] md:min-h-[92vh]">
+      <section data-header-hero className="sticky top-0 z-0 min-h-[100svh] md:min-h-[92vh]">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             {/* STF (Supremo Tribunal Federal) with the Justice statue on the left. Mobile
