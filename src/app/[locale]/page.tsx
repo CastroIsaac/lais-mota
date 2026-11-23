@@ -41,7 +41,7 @@ export default async function HomePage({ params }: Props) {
           desktop, since the text sits over the photo the same way at both sizes now.
           `sticky` pins it while the next section scrolls up over it (see that section's
           `relative z-10` + opaque background) instead of just scrolling away normally. */}
-      <section data-header-hero className="sticky top-0 z-0 min-h-[100svh]">
+      <section data-header-hero className="sticky top-0 z-0 h-[100svh] overflow-hidden">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             <HeroParallax alt={t.heroAlt} />
@@ -72,11 +72,10 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
 
-        {/* top-[52svh] reserves the upper half of the mobile screen purely for the photo —
-            her face sits around 25-45% down the portrait crop, so this keeps it fully clear
-            instead of the old bottom-anchored box whose height (driven by content) pushed the
-            headline up over her face on shorter phones. Desktop resets via md:inset-y-0. */}
-        <div className="absolute inset-x-0 top-[52svh] bottom-0 z-10 flex flex-col justify-end px-6 pb-10 pt-4 text-white md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
+        {/* Exactly one screen tall at every size. On phones/tablets the text block sits at the
+            bottom, with pb-[6.5rem] keeping both buttons clear of the fixed StickyMobileCta bar
+            (~69px). Desktop resets to the right-hand column, vertically centred. */}
+        <div className="absolute inset-x-0 top-0 bottom-0 z-10 flex flex-col justify-end px-6 pb-[6.5rem] pt-20 text-white lg:pb-10 md:inset-y-0 md:left-auto md:right-0 md:flex md:w-[48%] md:flex-col md:justify-center md:px-10 lg:px-16">
           <div className="reveal w-full max-w-xl">
             {/* The eyebrow is part of the h1 so the heading carries the search term
                 ("Advogada em Brasília"), while it still looks like the small line above. */}

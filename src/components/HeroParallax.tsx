@@ -40,7 +40,7 @@ export function HeroParallax({ alt }: { alt: string }) {
     <div ref={ref} className="hero-parallax absolute inset-0">
       <div className="hero-stage">
         <Image
-          src="/images/stf-fundo.jpg"
+          src="/images/stf-fundo-v2.jpg"
           alt=""
           fill
           priority
@@ -50,7 +50,7 @@ export function HeroParallax({ alt }: { alt: string }) {
         />
       </div>
       <Image
-        src="/images/estatua-justica.webp"
+        src="/images/estatua-justica-v2.webp"
         alt={alt}
         width={1323}
         height={1189}
