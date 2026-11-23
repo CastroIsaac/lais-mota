@@ -40,7 +40,7 @@ export default async function HomePage({ params }: Props) {
           desktop, since the text sits over the photo the same way at both sizes now.
           `sticky` pins it while the next section scrolls up over it (see that section's
           `relative z-10` + opaque background) instead of just scrolling away normally. */}
-      <section data-header-hero className="sticky top-0 z-0 min-h-[100svh] md:min-h-[92vh]">
+      <section data-header-hero className="sticky top-0 z-0 min-h-[100svh]">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
             {/* STF (Supremo Tribunal Federal) with the Justice statue on the left. Mobile
@@ -70,9 +70,15 @@ export default async function HomePage({ params }: Props) {
                 'linear-gradient(90deg, rgba(16,31,48,0) 42%, rgba(16,31,48,0.6) 66%, rgba(16,31,48,0.95) 88%)',
             }}
           />
-          <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/70 md:flex">
-            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.3em]">{t.scroll}</span>
-            <span className="h-8 w-px bg-white/40" aria-hidden="true" />
+          {/* Minimal mouse: outline + a dot that drifts down (scroll hint). Text kept for screen readers. */}
+          <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block">
+            <span className="sr-only">{t.scroll}</span>
+            <span
+              aria-hidden="true"
+              className="flex h-9 w-[22px] justify-center rounded-full border-[1.5px] border-white/60 pt-1.5"
+            >
+              <span className="scroll-dot block h-1.5 w-[3px] rounded-full bg-white/80" />
+            </span>
           </div>
         </div>
 

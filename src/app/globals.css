@@ -180,7 +180,21 @@ body.motion-ready .reveal.in-view {
   will-change: transform, filter;
 }
 
+/* Hero scroll hint: the dot inside the mouse outline drifts down and fades. */
+@keyframes scroll-dot {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  80% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+.scroll-dot {
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .scroll-dot {
+    animation: none;
+  }
   html {
     scroll-behavior: auto;
   }
