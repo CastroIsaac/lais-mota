@@ -488,9 +488,9 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroAlt: 'Laís Mota, lawyer in Brasília, Brazil',
+    heroAlt: 'The Justice statue in front of the Brazilian Supreme Federal Court in Brasília at sunset',
     eyebrow: 'Lawyer in Brazil · Strategic and international practice',
-    title: 'Understand the whole problem before choosing the path.',
+    title: 'Understand the whole problem before choosing the path',
     lead: 'A strategic practice grounded in civil litigation and complex human matters, and an international practice connecting law, business and transactions between Brazil and other countries.',
     ctaPrimary: 'Book a meeting',
     ctaSecondary: 'International practice',

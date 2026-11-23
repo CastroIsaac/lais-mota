@@ -43,27 +43,17 @@ export default async function HomePage({ params }: Props) {
       <section className="sticky top-0 z-0 min-h-[100svh] md:min-h-[92vh]">
         <div className="absolute inset-0 h-full w-full overflow-hidden">
           <div className="hero-zoom absolute inset-0">
-            {/* Mobile: tighter portrait crop — the wide desktop crop loses too much of her
-                when squeezed into a narrow mobile frame. Desktop: wide crop with room on
-                the right for the overlaid headline. Both rendered, CSS picks one per breakpoint
-                (Next/Image's standard art-direction pattern — no single-source responsive src). */}
+            {/* STF (Supremo Tribunal Federal) with the Justice statue on the left. Mobile
+                crops toward the statue; desktop keeps the statue left and the building under
+                the right-hand scrim where the headline sits. */}
             <Image
-              src="/images/lais-mota-image.jpeg"
+              src="/images/stf-hero.jpg"
               alt={t.heroAlt}
               fill
               priority
               quality={85}
               sizes="100vw"
-              className="object-cover object-top md:hidden"
-            />
-            <Image
-              src="/images/lais-mota-image.jpg"
-              alt={t.heroAlt}
-              fill
-              priority
-              quality={85}
-              sizes="100vw"
-              className="hidden object-cover object-left md:block"
+              className="object-cover object-[11%_center] md:object-center"
             />
           </div>
           <div

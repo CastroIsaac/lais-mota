@@ -598,10 +598,10 @@ export const pt = {
   },
 
   home: {
-    heroAlt: 'Laís Mota, advogada em Brasília-DF',
+    heroAlt: 'Estátua A Justiça diante do Supremo Tribunal Federal, em Brasília, ao pôr do sol',
     // Rendered inside the h1 (carries the search term "Advogada em Brasília").
     eyebrow: 'Advogada em Brasília · Atuação nacional e internacional',
-    title: 'Compreender o problema inteiro antes de escolher o caminho.',
+    title: 'Compreender o problema inteiro antes de escolher o caminho',
     lead: 'Advocacia estratégica com base no contencioso cível e nas demandas humanas complexas, e uma frente internacional que conecta Direito, negócios e operações entre o Brasil e outros países.',
     ctaPrimary: 'Agendar uma conversa',
     ctaSecondary: 'Advocacia internacional',
