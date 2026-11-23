@@ -14,6 +14,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* No visible scrollbar (page still scrolls by wheel, touch and keyboard). */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 body {
@@ -126,6 +129,10 @@ body.motion-ready .reveal.in-view {
   .hero-zoom {
     animation: none;
   }
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 /* Home hero layers (HeroParallax): the building photo covers the hero like object-cover

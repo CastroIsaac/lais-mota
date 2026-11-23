@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Inter, Lora } from 'next/font/google'
 import { Header } from '@/components/Header'
+import { SmoothScroll } from '@/components/SmoothScroll'
 import { Footer } from '@/components/Footer'
 import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 import { ScrollReveal } from '@/components/ScrollReveal'
@@ -169,6 +170,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="font-sans">
         <JsonLd data={jsonLd} />
         <ScrollReveal />
+        <SmoothScroll />
         <Header locale={locale} nav={dict.nav} blogLabel={showBlog ? blogCopy.label : undefined} />
         <main className="pb-16 lg:pb-0">{children}</main>
         <Footer locale={locale} dict={dict} blogLabel={showBlog ? blogCopy.label : undefined} />
