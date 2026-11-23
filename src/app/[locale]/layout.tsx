@@ -175,7 +175,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <main className="pb-16 lg:pb-0">{children}</main>
         <Footer locale={locale} dict={dict} blogLabel={showBlog ? blogCopy.label : undefined} />
         <WhatsAppFloat label={dict.whatsappLabel} greeting={dict.whatsappGreeting} />
-        <StickyMobileCta locale={locale} label={dict.stickyCta} />
+        <StickyMobileCta label={dict.whatsappLabel} greeting={dict.whatsappGreeting} />
         <CookieBanner locale={locale} t={dict.cookie} />
       </body>
     </html>
