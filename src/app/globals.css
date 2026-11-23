@@ -128,6 +128,53 @@ body.motion-ready .reveal.in-view {
   }
 }
 
+/* Home hero layers (HeroParallax): the building photo covers the hero like object-cover
+   (the "stage", sized in container units of .hero-parallax), and the statue cut-out sits
+   on it at the spot it occupies in the original photo. --hero-progress (0 → 1 over the
+   first screen of scroll) lifts the building a little and the statue faster. */
+.hero-parallax {
+  container-type: size;
+  overflow: hidden;
+}
+.hero-stage,
+.hero-statue {
+  --W: max(100cqw, 192cqh); /* 8% taller than a plain cover: slack for the drift */
+  --H: calc(var(--W) * 941 / 1672);
+  --X: calc((100cqw - var(--W)) / 2);
+  --Y: calc((100cqh - var(--H)) / 2);
+  --p: var(--hero-progress, 0);
+  position: absolute;
+  will-change: transform;
+}
+.hero-stage {
+  left: var(--X);
+  top: var(--Y);
+  width: var(--W);
+  height: var(--H);
+  transform: translate3d(0, calc(var(--p) * -4cqh), 0);
+}
+.hero-statue {
+  left: calc(var(--X) + var(--W) * -0.063);
+  top: calc(var(--Y) + var(--H) * 0.168);
+  width: calc(var(--W) * 0.586);
+  max-width: none;
+  height: auto;
+  transform: translate3d(0, calc(var(--p) * -18cqh), 0);
+}
+/* Phones: building framed a bit left of centre, statue sized to the screen width
+   (the portrait framing the client approved), bottom-left like the vertical photo. */
+@media (max-width: 767px) {
+  .hero-stage,
+  .hero-statue {
+    --X: calc((100cqw - var(--W)) * 0.4);
+  }
+  .hero-statue {
+    left: -24cqw;
+    top: 38cqh;
+    width: 118cqw;
+  }
+}
+
 /* Waving flag — two motion layers stacked for realism:
    1. flag-gust (slow, on the wrapper): the whole flag leaning with changing wind direction/strength.
    2. flag-wave (fast, on the image): the fabric itself billowing — width/fold changes via scaleX/skew.
